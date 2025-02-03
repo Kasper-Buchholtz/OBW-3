@@ -1,73 +1,73 @@
 'use client'
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Heading from '@/components/atoms/Heading'
-import Paragraph from '@/components/atoms/Paragraph'
-import Media from '@/components/organisms/Media'
 import Section from '@/components/sections/Section'
-import Modal from '../molecules/Modal'
-import { useState } from 'react'
-import { AnimatePresence } from 'motion/react'
-
-/**
- *
- * @returns: En sektion med en hero.
- * @example: <Hero />
- * @alias: Hero
- * @summary: Denne komponent bruges til at vise en hero.
- * @version: 1.0.0
- * @property: [title, image, video, altText, text, data]
- * @author: Kasper Buchholtz
- *
- **/
+import { Button } from '../atoms/Button'
 
 interface HeroProps {
   data?: any
 }
 
-const before =
-  'before:bg-gradient-to-b before:from-dark/0 before:to-dark/60 before:absolute before:inset-0 before:z-10 '
 const Hero: React.FC<HeroProps> = ({ data, ...props }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [currentVideo, setCurrentVideo] = useState<string>(
+    data?.content?.[0]?.media?.asset.url || ''
+  )
 
-  const OpenModal = () => {
-    setIsOpen(!isOpen)
+  // Ref to the <video> element
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Whenever currentVideo changes, reload & play
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load()
+      videoRef.current.play()
+    }
+  }, [currentVideo])
+
+  const handleSetCurrentVideo = (index: number) => {
+    const videoUrl = data?.content?.[index]?.media?.asset.url
+    if (videoUrl) setCurrentVideo(videoUrl)
   }
+
   return (
-    <>
-      <Section
-        {...props}
-        data={data}
-        paddingX="none"
-        className={`h-screen relative place-content-center overflow-hidden ${before}`}
-      >
-        <div className="absolute w-full h-full">
-          <Media data={data?.MediaObject?.media} />
-        </div>
-        <div className="z-10 col-start-1 text-center -col-end-1 sm:col-start-2 sm:-col-end-2 lg:col-start-3 lg:-col-end-3 xl:col-start-6 xl:-col-end-6 2xl:col-start-6 2xl:-col-end-6">
-          <Heading tag="h1" type="h1" fontFamily="sans">
-            {data?.title}
-          </Heading>
-          <Paragraph>{data?.subtitle}</Paragraph>
-          {data?.MediaObject?.media.videoObject && (
-            <button onClick={OpenModal} className="relative z-40 text-white">
-              Afspil video
-            </button>
-          )}
-          <div className="absolute top-0 left-0 z-50 flex items-center justify-center w-full h-full pointer-events-none">
-            {data?.MediaObject?.media?.videoObject?.video && (
-              <AnimatePresence mode="sync">
-                {isOpen && (
-                  <Modal openModal={OpenModal}>
-                    <Media data={data?.MediaObject?.media} />
-                  </Modal>
-                )}
-              </AnimatePresence>
-            )}
-          </div>
-        </div>
-      </Section>
-    </>
+    <Section
+      {...props}
+      data={data}
+      variant='none'
+      className="relative h-screen overflow-hidden place-content-center"
+    >
+      <Herovideo currentVideo={currentVideo} videoRef={videoRef} />
+      <ul className="relative z-10 col-span-full">
+        {data?.content?.map((item: any, index: number) => (
+          <li key={index} onMouseEnter={() => handleSetCurrentVideo(index)}>
+            <Button link={item.link} variant="none" className=' text-shadow-0'>
+            <Heading fontFamily='serif' type='h1'>{item.link?.label}</Heading>
+            </Button>
+          </li>
+        ))}
+      </ul>
+    </Section>
   )
 }
 
 export default Hero
+
+
+
+function Herovideo({ currentVideo, videoRef }) {
+  return (
+    <div className="absolute inset-0 size-full">
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="object-cover object-center w-full h-full"
+      >
+        <source src={currentVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  )
+}

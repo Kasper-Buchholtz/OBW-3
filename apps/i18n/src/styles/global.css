@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .text-shadow-0 {
+    text-shadow:
+      1px 1px 0 white,
+      -1px -1px 0 white,
+      1px -1px 0 white,
+      -1px 1px white;
+      -webkit-text-stroke: 1px 1px 0 white,
+      -1px -1px 0 white,
+      1px -1px 0 white,
+      -1px 1px white;
+
+  }
+  .text-shadow-none {
+    text-shadow: none;
+  }
+  
+}

@@ -9,21 +9,23 @@ import { client } from '@/sanity/lib/sanity.client'
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/sanity.queries'
 import Script from 'next/script'
 import Appconfig from 'config'
-import { Inter, PT_Serif } from 'next/font/google';
+import { DM_Serif_Display, Inter } from 'next/font/google';
 
 const sans = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
-});
-
-const serif = PT_Serif({
+})
+ 
+const serif = DM_Serif_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-serif',
   style: ['normal', 'italic'],
-  weight: ['400', '700'],
-});
+  weight: '400',
+  preload: true,
+})
+
 
 export default async function RootLayout({
   params,

@@ -21,6 +21,7 @@ const sectionVariants = cva('grid', {
       lys: 'bg-superego-light-light text-superego-dark',
       mørk: 'bg-superego-dark text-superego-light-base',
       lilla: 'bg-superego-purple text-superego-light-base',
+      none: ''
     },
     columns: {
       default:
