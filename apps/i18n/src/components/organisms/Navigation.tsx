@@ -241,14 +241,14 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
         className="fixed top-0 left-0 z-50 flex w-full h-full pt-20 font-serif bg-darks-900 nav se-grid"
       >
         <Section variant='none' className='w-full'>
-        <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto h-fit space-y-19 -col-end-1 col-span-full">
+        <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto space-y-10 h-fit -col-end-1 col-span-full">
           {navItems.map((item, index) => (
             <li key={item.label}>
               {item.subLinks ? (
                 <React.Fragment>
                   {/* Clicking this button toggles the submenu */}
                     <button
-                    className={`text-giant transition-colors  ${openSubmenus[index] ? "text-lights-0" : "text-shadow-0"}`}
+                    className={`text-giant transition-colors hover:text-lights-0  ${openSubmenus[index] ? "text-lights-0" : "text-shadow-0"}`}
                     onClick={() => toggleSubmenu(index)}
                     >
                     {item.label}

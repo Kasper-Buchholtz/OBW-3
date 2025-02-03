@@ -53,7 +53,6 @@ export default function PageContainer({
       <main className={` min-h-screen bg-superego-light-light`}>
         {children}
       </main>
-      <Footer locale={locale} />
     </>
   )
 }
