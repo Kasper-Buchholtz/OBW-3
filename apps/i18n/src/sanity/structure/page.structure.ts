@@ -10,8 +10,15 @@ export default defineStructure<ListItemBuilder>((S) =>
     .child(
       S.list()
         .title('Sprog')
-        .items(
-          AppConfig.i18n.locales.map((locale) =>
+        .items([
+          S.listItem()
+            .title('No Locale')
+            .child(
+              S.documentTypeList('page')
+                .title('No Locale')
+                .filter('_type == "page" && !defined(locale)'),
+            ),
+          ...AppConfig.i18n.locales.map((locale) =>
             S.listItem()
               .title(locale.title)
               .icon(iconByLocale(locale.id))
@@ -22,6 +29,6 @@ export default defineStructure<ListItemBuilder>((S) =>
                   .params({ locale: locale.id }),
               ),
           ),
-        ),
+        ]),
     ),
 )

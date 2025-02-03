@@ -101,5 +101,16 @@ export const pageBuilder = defineType({
       name: 'IconPicker',
       type: 'IconPicker',
     }),
+
+
+    /* New */
+    defineArrayMember({
+      name: 'WatchType',
+      type: 'WatchType',
+    }),
+    defineArrayMember({
+      name: 'ImagesType',
+      type: 'ImagesType',
+    })
   ],
 })

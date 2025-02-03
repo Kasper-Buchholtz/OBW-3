@@ -28,6 +28,14 @@ const config: Omit<Config, 'content'> = {
     },
     extend: {
       colors: {
+        lights: {
+          0: '#FFFFFF',
+          400: '#858585',
+        },
+        darks: {
+          700: '#333333',
+          900: '#0A0A0A'
+        },
         superego: {
           green: '#3BE086',
           purple: '#7B61FF',

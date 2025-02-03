@@ -8,6 +8,8 @@ import position from './management/position.schema'
 import article from './documents/article.schema'
 import event from './documents/event.schema'
 import page from './documents/page.schema'
+import caseSchema from './documents/case.schema'
+
 import { ArticlesType } from './sections/ArticlesType.schema'
 import { accordionType } from './sections/atoms/accordionType.schema'
 import { buttonType } from './sections/atoms/ButtonType.schema'
@@ -43,6 +45,8 @@ import { heroType } from './sections/herotype.schema'
 import { Hero2Type } from './sections/Hero2Type.schema'
 import { Hero3Type } from './sections/Hero3Type.schema'
 import { MediaObject } from './sections/atoms/MediaObject.schema'
+import { WatchType } from '../queries/sections/Watch.schema'
+import { ImagesType } from './sections/Images.schema'
 
 export const schemaTypes = [
   heroType,
@@ -86,6 +90,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Pages
     page,
+    caseSchema,
     event,
     article,
     position,
@@ -99,6 +104,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     Hero2Type,
     Hero3Type,
     category,
+    WatchType,
+    ImagesType,
     // Objects
     blockContent,
     Gallery,
