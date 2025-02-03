@@ -34,6 +34,7 @@ export default function Header({ locale }) {
   return (
     <>
       <Section
+        variant='none'
         paddingBottom={'none'} paddingTop={'none'} tag={'header'}
         className={` fixed top-0 right-0 w-full py-4 se-grid  z-[9999999999] h-20 transition-all`}
       >
