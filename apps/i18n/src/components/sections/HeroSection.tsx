@@ -24,7 +24,9 @@ const Hero: React.FC<HeroProps> = ({ data, ...props }) => {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.load()
-      videoRef.current.play()
+      videoRef.current.onloadeddata = () => {
+        videoRef.current?.play()
+      }
     }
   }, [currentVideo])
 
