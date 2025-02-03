@@ -93,6 +93,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
   const navItemsRef = useRef(null);
   const buttonRef = useRef(null);
   const [openSubmenus, setOpenSubmenus] = useState({}); // Manage open submenus state
+  const creditRef = useRef(null)
 
   useEffect(() => {
     if (isOpen) {
@@ -100,8 +101,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
       gsap.set(navItemsRef.current.children, {
         opacity: 0,
         y: -50,
-      });
-
+      })
       gsap.fromTo(
         navRef.current,
         { clipPath: "polygon(0% 0%, 0% 0%, 100% 100%, 100% 100%)" },
@@ -275,7 +275,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
           ))}
         </ul>
         </Section>
-        <div className="absolute font-sans bottom-4 right-4 text-lights-400 text-[9px]">
+        <div className="absolute overflow-hidden font-sans bottom-4 right-4 text-lights-400 text-[9px]">
           <a target="_blank" href="https://kasperbuchholtz.dk">Website by Kasperbuchholtz.dk</a>
         </div>
       </nav>
