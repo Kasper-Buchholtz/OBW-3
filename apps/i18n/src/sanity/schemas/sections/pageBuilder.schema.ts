@@ -111,6 +111,10 @@ export const pageBuilder = defineType({
     defineArrayMember({
       name: 'ImagesType',
       type: 'ImagesType',
+    }),
+    defineArrayMember({
+      name: 'projectsType',
+      type: 'projectsType',
     })
   ],
 })

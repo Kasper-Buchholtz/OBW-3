@@ -18,6 +18,8 @@ import LogoGallery2 from './sections/LogoGallery2'
 import ContactFormSection from './sections/ContactFormSection'
 import { createDataAttribute, useOptimistic } from '@sanity/visual-editing'
 import { PageBuilderProps, PageData, Section } from '@/types/PageBuilder.types'
+import ProjectsTypeSection from './sections/projectsTypeSection'
+import WatchSection from './sections/WatchSection'
 
 const sanityConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
@@ -131,7 +133,6 @@ function renderSection(section: Section) {
         <EventSection
           amount={section.amount}
           section={section}
-
         />
       )
     case 'textContainer':
@@ -140,6 +141,12 @@ function renderSection(section: Section) {
       )
     case 'MediaType':
       return <Media data={section} index={undefined} />
+    case 'projectsType':
+      return (
+        <ProjectsTypeSection data={section} />
+      )
+    case 'WatchType':
+      return <WatchSection data={section} />
     default:
       return null
   }

@@ -26,12 +26,8 @@ import { CustomToolMenu } from '@/components/sanity/ToolMenu'
 import { createVisualAction } from '@/sanity/actions/sanity.actions'
 import { myTheme } from '@/sanity/lib/sanity.theme'
 import { pages } from '@repo/sanity-studio/src/plugins/navigator/index'
-import {
-  documentInternationalization,
-} from '@sanity/document-internationalization'
+import { documentInternationalization } from '@sanity/document-internationalization'
 import Appconfig from 'config'
-
-
 
 export default defineConfig({
   basePath: '/super-login',
@@ -47,49 +43,19 @@ export default defineConfig({
     components: { toolMenu: CustomToolMenu },
   },
   plugins: [
-    dashboardTool({
-      title: 'Startside',
-      widgets: [
-        {
-          name: 'HeroWidget',
-          component: HeroWidget,
-          layout: { width: 'full' }, // You can adjust the layout width ('small', 'medium', 'full')
-        },
-        {
-          name: 'BannerWidget',
-          component: BannerWidget,
-          layout: { width: 'full' }, // You can adjust the layout width ('small', 'medium', 'full')
-        },
-        {
-          name: 'links',
-          component: LinksWidget,
-          layout: { width: 'auto', height: 'large' },
-        },
-        {
-          name: 'NewsWidget',
-          component: NewsWidget,
-          layout: { width: 'medium', height: 'large' }, // You can adjust the layout width ('small', 'medium', 'full')
-        },
-        {
-          name: 'ProjectManagerWidget',
-          component: ProjectManagerWidget,
-          layout: { width: 'medium', height: 'medium' }, // You can adjust the layout width ('small', 'medium', 'full')
-        },
-        {
-          name: 'SuperegoWidget',
-          component: SuperegoWidget,
-          layout: { width: 'medium', height: 'auto' }, // You can adjust the layout width ('small', 'medium', 'full')
-        },
-      ],
-    }),
     structureTool({ structure, title: 'Indhold' }),
 
     documentInternationalization({
       // Required configuration
-      supportedLanguages: [
-        ...Appconfig.i18n.locales
+      supportedLanguages: [...Appconfig.i18n.locales],
+      schemaTypes: [
+        'page',
+        'navigation',
+        'footer',
+        'settings',
+        'article',
+        'event',
       ],
-      schemaTypes: ['page', 'navigation', 'footer', 'settings', 'article', 'event'],
       languageField: 'locale',
     }),
     pages({

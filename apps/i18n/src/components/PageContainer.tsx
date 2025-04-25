@@ -2,6 +2,7 @@
 import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import { Lenis } from '@/components/Lenis'
+import Cursor from './interactions/Cursor'
 
 /**
  *
@@ -28,7 +29,6 @@ export default function PageContainer({
     gestureOrientation: "vertical",
     smoothWheel: true,
     touchMultiplier: 2,
-
   },
   children,
 }: {
@@ -53,6 +53,7 @@ export default function PageContainer({
       <main className={` min-h-screen bg-superego-light-light`}>
         {children}
       </main>
+      <Cursor />
     </>
   )
 }

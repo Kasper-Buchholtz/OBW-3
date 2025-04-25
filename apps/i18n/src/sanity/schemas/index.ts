@@ -47,6 +47,7 @@ import { Hero3Type } from './sections/Hero3Type.schema'
 import { MediaObject } from './sections/atoms/MediaObject.schema'
 import { WatchType } from '../queries/sections/Watch.schema'
 import { ImagesType } from './sections/Images.schema'
+import { projectsType } from './sections/projectsType.schema'
 
 export const schemaTypes = [
   heroType,
@@ -106,6 +107,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     category,
     WatchType,
     ImagesType,
+    projectsType,
     // Objects
     blockContent,
     Gallery,

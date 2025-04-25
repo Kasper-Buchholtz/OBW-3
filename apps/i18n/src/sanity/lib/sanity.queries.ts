@@ -196,3 +196,24 @@ export const allSlugsQuery = `
   locale,
 }
 `
+
+export const PROJECT_QUERY = groq`
+*[_type == "case" && slug.current == $slug][0] {
+  ...,
+  _type,
+  "localeInfo": {
+    locale,
+    "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      title,
+      _type,
+      slug,
+      locale
+    },
+  },
+  ${SEO_QUERY},
+  ${pageBuilderQuery},
+  image{
+    ${ImageQuery}
+  }
+}
+`

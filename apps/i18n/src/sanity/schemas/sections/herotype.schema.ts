@@ -2,6 +2,7 @@ import { PanelTopInactive } from '@mynaui/icons-react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 export const heroType = defineType({
   name: 'hero',
+  title: 'Topbanner',
   type: 'object',
   groups: [
     { title: 'Media', name: 'media' },
@@ -11,7 +12,6 @@ export const heroType = defineType({
   ],
   description:
     'Banneret fungerer som et sidehoved, der skaber blikfang fra første øjekast og gør siden overskuelig.',
-  title: 'Hero 1',
   icon: PanelTopInactive,
   fields: [
     defineField({
@@ -31,9 +31,9 @@ export const heroType = defineType({
               name: 'media',
               type: 'file',
               title: 'Media',
-            })
-          ]
-        })
+            }),
+          ],
+        }),
       ],
     }),
 
@@ -46,17 +46,12 @@ export const heroType = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      tagline: 'tagline',
-      type: 'type',
-      media: 'image',
-      icon: 'icon',
+      amount: 'content',
     },
-    prepare({ title, media, icon }) {
+    prepare({ amount }) {
       return {
-        title: title || 'Ingen titel',
-        subtitle: 'Topbanner',
-        media:  icon,
+        title: `Topbanner`,
+        subtitle: `Indhold: ${amount.length}`,
       }
     },
   },

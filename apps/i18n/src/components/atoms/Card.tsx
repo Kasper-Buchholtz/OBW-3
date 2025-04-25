@@ -34,7 +34,7 @@ const CardVariants = cva(' ', {
         },
         borderBottom: {
             defualt: 'border-b pb-8 border-gray-200',
-            none: 'border-none'
+            none: ''
         }
     },
     defaultVariants: {

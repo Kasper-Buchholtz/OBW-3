@@ -31,7 +31,6 @@ export default async function DynamicRoute({
 
   return (
     <PageContainer locale={page.localeInfo}>
-
       <Section
         variant="lilla"
         paddingTop="none"

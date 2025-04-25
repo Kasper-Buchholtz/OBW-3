@@ -40,14 +40,10 @@ const Hero: React.FC<HeroProps> = ({ data, ...props }) => {
 
     // Fade out
     gsap.to(videoContainerRef.current, {
-      clipPath: 'inset(0 0 100% 0)',
-      duration: 0.725,
+      duration: 0,
       onComplete: () => {
         // Once faded, set the new video and fade in
-        gsap.to(videoContainerRef.current, { 
-          clipPath: 'inset(0 0 -100% 0)',
-          ease: 'power3.inOut',
-          duration: 0.725 
+        gsap.to(videoContainerRef.current, {
         })
         setCurrentVideo(videoUrl)
       },

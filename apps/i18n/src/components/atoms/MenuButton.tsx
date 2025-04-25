@@ -22,7 +22,7 @@ const MenuButton = ({ isOpen, setIsOpen }: MenuButtonProps) => {
             aria-expanded="true"
             aria-label={isOpen ? 'Luk menu' : 'Åben menu'}
             onClick={() => setIsOpen(!isOpen)}
-            className="relative z-[999999999] size-11.5 group cursor-pointer"
+            className="relative z-[999999999] size-11.5 group cursor-pointer hover-target"
         >
             <span
                 className={`block absolute transition-all h-0.5 w-full bg-lights-0 transform duration-500 ease-in-out ${isOpen ? 'rotate-45 ' : '-translate-y-1.5 group-hover:w-10'}`}

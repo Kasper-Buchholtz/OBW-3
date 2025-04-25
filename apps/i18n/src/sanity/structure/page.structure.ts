@@ -3,7 +3,6 @@ import defineStructure from '@/utils/defineStructure'
 import AppConfig from '../../../config'
 import { iconByLocale } from '@/utils/iconByLocale'
 
-
 export default defineStructure<ListItemBuilder>((S) =>
   S.listItem()
     .title('Sider')
@@ -11,13 +10,6 @@ export default defineStructure<ListItemBuilder>((S) =>
       S.list()
         .title('Sprog')
         .items([
-          S.listItem()
-            .title('No Locale')
-            .child(
-              S.documentTypeList('page')
-                .title('No Locale')
-                .filter('_type == "page" && !defined(locale)'),
-            ),
           ...AppConfig.i18n.locales.map((locale) =>
             S.listItem()
               .title(locale.title)
@@ -29,6 +21,13 @@ export default defineStructure<ListItemBuilder>((S) =>
                   .params({ locale: locale.id }),
               ),
           ),
+          S.listItem()
+            .title('Ingen sprog')
+            .child(
+              S.documentTypeList('page')
+                .title('Ingen sprog')
+                .filter('_type == "page" && !defined(locale)'),
+            ),
         ]),
     ),
 )

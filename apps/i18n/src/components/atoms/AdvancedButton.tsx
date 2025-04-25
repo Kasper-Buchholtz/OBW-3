@@ -22,13 +22,13 @@ import { cn } from '@/utils/twMerge'
 type ExtendedAdvancedButtonProps = AdvancedButtonProps & VariantProps<typeof advancedButtonVariants>
 
 const advancedButtonVariants = cva(
-  'inline-flex items-center gap-4 justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50', // whitespace-nowrap
+  'inline-flex items-center gap-4 justify-center rounded-md text-sm hover-target font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50', // whitespace-nowrap
   {
     variants: {
       variant: {
         default: 'bg-superego-green px-4 py-2 text-superego-light-light hover:bg-superego-green/90',  // @deprecated
         primary: 'bg-superego-green px-4 py-2 text-superego-light-light hover:bg-superego-green/90',
-        secondary:'bg-superego-dark px-4 py-2 text-superego-light-light hover:bg-superego-dark/80',
+        secondary: 'bg-superego-dark px-4 py-2 text-superego-light-light hover:bg-superego-dark/80',
         none: ''
       },
     },

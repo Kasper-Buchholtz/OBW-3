@@ -18,9 +18,9 @@ import { clean } from '@/utils/sanitize'
 const sectionVariants = cva('grid', {
   variants: {
     variant: {
-      lys: 'bg-superego-light-light text-superego-dark',
-      mørk: 'bg-superego-dark text-superego-light-base',
-      lilla: 'bg-superego-purple text-superego-light-base',
+      lys: 'bg-darks-900 text-lights-0',
+      mørk: 'bg-darks-900 text-lights-0',
+      lilla: 'bg-darks-900 text-lights-0',
       none: ''
     },
     columns: {
@@ -80,12 +80,12 @@ export default function Section({
         {...props}
         className={cn(
           sectionVariants({
-            variant: variant ?? clean(data?.design?.color?.color)as any,
+            variant: variant ?? clean(data?.design?.color?.color) as any,
             columns,
             gap,
             paddingX,
-            paddingBottom: paddingBottom ?? (data?.design?.padding ? clean(data?.design?.padding.spacingBottom) : 'default')as any,
-            paddingTop: paddingTop ?? (data?.design?.padding ? clean(data?.design?.padding.spacingTop) : 'default')as any,
+            paddingBottom: paddingBottom ?? (data?.design?.padding ? clean(data?.design?.padding.spacingBottom) : 'default') as any,
+            paddingTop: paddingTop ?? (data?.design?.padding ? clean(data?.design?.padding.spacingTop) : 'default') as any,
             className,
           }),
         )}

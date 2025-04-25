@@ -64,9 +64,10 @@ import NavigationItem from '../atoms/NavigationItem'
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Section from '../sections/Section'
+import Noise from '../interactions/Noise'
 
 const navItems = [
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
   {
     label: "Work",
     href: "#",
@@ -240,6 +241,15 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
         style={{ visibility: "hidden" }}
         className="fixed top-0 left-0 z-50 flex w-full h-full pt-20 font-serif bg-darks-900 nav se-grid"
       >
+        <div className='absolute inset-0 pointer-events-none size-full'>
+          <Noise 
+    patternSize={100  }
+    patternScaleX={2.5}
+    patternScaleY={2.9}
+    patternRefreshInterval={2}
+    patternAlpha={20}
+  /></div>
+
         <Section variant='none' className='w-full'>
         <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto space-y-10 h-fit -col-end-1 col-span-full">
           {navItems.map((item, index) => (

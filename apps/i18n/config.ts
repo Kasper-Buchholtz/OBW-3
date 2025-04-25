@@ -1,8 +1,8 @@
 const Appconfig = {
   i18n: {
     locales: [
-      { id: 'en', title: 'English' },
-      { id: 'da', title: 'Danish' },
+      { id: 'en', title: 'Engelsk' },
+      { id: 'da', title: 'Dansk' },
     ],
     defaultLocaleId: 'da',
   },

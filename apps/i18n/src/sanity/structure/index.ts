@@ -11,9 +11,6 @@ export const structure: StructureResolver = (S, context) =>
     .title('Indhold')
     .items([
       pages(S, context),
-      events(S, context),
-      articles(S, context),
-      employees(S, context),
       projects(S, context),
       S.divider(),
       settings(S, context),
