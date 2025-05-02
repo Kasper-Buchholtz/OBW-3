@@ -24,9 +24,9 @@ const GallerySection = ({ section }) => {
       data={section}
     >
       <div className='relative col-span-full'>
-        <Photo image={section.images[0]} className="absolute aspect-[16/9] max-w-3xl h-fit top-0 left-0" />
-        <Photo image={section.images[1]} className="absolute aspect-[16/9] right-0 bottom-0 max-w-3xl h-fit" />
-        <Photo image={section.images[2]} className="absolute aspect-[16/9] left-0 -bottom-1/3 max-w-3xl h-fit" />
+        <Photo image={section.images[0]} className="absolute aspect-[16/9] max-w-3xl h-fit top-0 right-0 " />
+        <Photo image={section.images[1]} className="absolute aspect-[16/9] left-0 bottom-12 max-w-3xl h-fit" />
+        <Photo image={section.images[2]} className="absolute aspect-[16/9] right-12 -bottom-1/3 max-w-3xl h-fit" />
       </div>
     </Section>
   )

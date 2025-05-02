@@ -43,8 +43,8 @@ type ExtendLanguageProps = LanguageProps & VariantProps<typeof LocaleSwitcherVar
 const LocaleSwitcher = ({ locale, position, className, view }: ExtendLanguageProps) => {
 
     // Create a map of translations
-    const translationMap: Record<string, ExtendedLanguage | undefined> = locale._translations.reduce((acc, translation) => {
-        acc[translation.locale] = translation;
+    const translationMap: Record<string, ExtendedLanguage | undefined> = locale?._translations?.reduce((acc, translation) => {
+        acc[translation?.locale] = translation;
         return acc;
     }, {} as Record<string, ExtendedLanguage>);
 
