@@ -1,3 +1,5 @@
+"use client"
+import { AnimatePresence, motion } from "motion/react";
 /**
  *
  * @returns: En ProjectTitle-komponent ...
@@ -16,11 +18,27 @@ import Photo from "../atoms/Photo";
 import Section from "./Section";
 
 const ProjectTitle = ({ data }) => {
+    console.log('ProjectTitle', data._id);
     return (
         <Section paddingX="none" paddingTop="none" paddingBottom="none" className="h-screen" gap="secondary">
+
             <div className="relative col-span-full">
-                <div className="">
-                    <Photo className="h-full h-screen/1.2" image={data.image} />
+                <div
+                >
+                    <div className="">
+                        {/* <Photo className="h-full h-screen/1.2" image={data.image} /> */}
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                layoutId={data?._id}
+                            >
+
+                                <video
+                                    loop autoPlay muted playsInline src={data?.video?.asset?.url}>
+                                    <source src={data?.video?.asset?.url} />
+                                </video>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
                 </div>
                 <div className="absolute bottom-0 left-0 grid mt-auto size-full place-content-[bottom_left] pb-12 pl-4 xs:pl-4 sm:pl-13 md:pl-24 lg:pl-19 xl:pl-36 2xl:pl-52">
                     <div className="mt-auto">

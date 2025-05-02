@@ -7,7 +7,7 @@ import { PROJECT_QUERY } from '@/sanity/lib/sanity.queries';
 import { generatePageMetadata } from '@/utils/metadataUtils';
 import ProjectTitle from '@/components/sections/ProjectTitle';
 import { PageBuilder } from '@/components/PageBuilder';
-
+import { motion } from 'motion/react';
 export interface Params {
   slug: string[];
   locale: string;

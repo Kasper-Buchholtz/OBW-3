@@ -214,6 +214,22 @@ export const PROJECT_QUERY = groq`
   ${pageBuilderQuery},
   image{
     ${ImageQuery}
-  }
+  },
+  video {
+    ...,
+    asset-> {
+      ...,
+      _id,
+      url,
+      _type,
+      altText,
+      description,
+      title,
+      metadata {
+        blurHash,
+        dimensions
+      }
+    }
+  },
 }
 `

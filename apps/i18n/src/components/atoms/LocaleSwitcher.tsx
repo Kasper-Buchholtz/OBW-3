@@ -77,7 +77,7 @@ const LocaleSwitcher = ({ locale, position, className, view }: ExtendLanguagePro
                         <React.Fragment key={i18nLocale.id}>
                             <li>
                                 <Link href={href} className={`block hover:text-lights-0 transition-all ${isActive ? 'text-lights-0' : 'text-lights-0/40'}`} title={`Skift sproget til ${i18nLocale.title}`} locale={i18nLocale.id}>
-                                    <Heading tag="span" type="span">
+                                    <Heading tag="span" type="span" fontFamily="sans">
                                         {i18nLocale.id}
                                     </Heading>
                                 </Link>

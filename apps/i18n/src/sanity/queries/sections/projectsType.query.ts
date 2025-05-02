@@ -17,10 +17,12 @@ _type == "projectsType" => {
       image{
         ${ImageQuery}
       },
+      video{
+        ${ImageQuery}
+      },
+      "videoURL": video.asset->url,
       commercialObj,
       musicalObject
     }
       }
 `
-
-  

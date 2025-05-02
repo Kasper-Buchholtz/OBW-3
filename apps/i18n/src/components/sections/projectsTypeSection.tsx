@@ -11,7 +11,7 @@ import { resolveHref } from "@/sanity/lib/sanity.links";
 import Link from "next/link";
 import { resolveHrefLang } from "@repo/i18n/src/resolveHrefLang";
 import { useRouter } from "next/navigation";
-
+import { AnimatePresence, motion } from "motion/react";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
@@ -64,8 +64,6 @@ function MusicalTypeCard({ data }) {
     const cardRef = React.useRef(null);
     const cardHeadingRef = React.useRef(null);
     const imageRef = React.useRef(null);
-    const [animating, setAnimating] = React.useState(false);
-    const router = useRouter();
 
     React.useEffect(() => {
         if (!cardRef.current || !cardHeadingRef.current) return;
@@ -111,37 +109,32 @@ function MusicalTypeCard({ data }) {
 
         return () => ctx.revert();
     }, []);
-    const [showPortal, setShowPortal] = React.useState(false);
 
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        setAnimating(true);
-
-        gsap.to(imageRef.current, {
-            scale: 1.1,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power2.inOut",
-            onComplete: () => {
-                router.push(resolveHrefLang(data.locale, data._type, data.slug.current));
-            },
-        });
-        setShowPortal(true);
-
-    };
 
     return (
         <li className="relative grid grid-cols-subgrid col-span-full h-screen/1.6">
-            <a
+            <Link href={resolveHrefLang(data.locale, data._type, data.slug.current)}
                 className="grid h-full group grid-cols-subgrid col-span-full w-fit cursor-pointer"
-                onClick={handleClick}
             >
                 <div className="relative col-end-4 -col-start-1">
                     <div ref={cardRef} className="h-full">
-                        <div ref={imageRef}>
-                            <Photo image={data?.image} className="h-full" />
-                        </div>
+                        <motion.div
+                        >
+                            <div ref={imageRef}>
+                                {/* <Photo image={data?.image} className="h-full" /> */}
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        layoutId={data._id}
+                                    >
+
+                                        <video
+                                            loop autoPlay muted playsInline src={data?.video?.asset?.url}>
+                                            <source src={data?.video?.asset?.url} />
+                                        </video>
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
+                        </motion.div>
                     </div>
                     <div className="absolute left-0 z-10 -translate-x-1/2 w-fit bottom-8">
                         <div className="overflow-hidden">
@@ -188,7 +181,7 @@ function MusicalTypeCard({ data }) {
                         </div>
                     </div>
                 </div>
-            </a>
+            </Link>
         </li>
     );
 }
