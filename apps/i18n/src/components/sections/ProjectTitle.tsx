@@ -1,79 +1,61 @@
-"use client"
-import { AnimatePresence, motion } from "motion/react";
-/**
- *
- * @returns: En ProjectTitle-komponent ...
- * @example: <ProjectTitle />
- * @alias: ProjectTitle
-  * @summary: Denne komponent bruges til at ...
- * @version: 1.0.0
- * @property: [...]
- * @author: Kasper Buchholtz
- *
-**/
-
-import Card from "../atoms/Card";
-import Heading from "../atoms/Heading";
-import Photo from "../atoms/Photo";
-import Section from "./Section";
+'use client'
+import { useEffect, useRef } from 'react'
+import { motion } from 'motion/react'
+import { useVideoTime } from './VideoTimeContext'
 
 const ProjectTitle = ({ data }) => {
-    console.log('ProjectTitle', data._id);
-    return (
-        <Section paddingX="none" paddingTop="none" paddingBottom="none" className="h-screen" gap="secondary">
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const { getTime } = useVideoTime()
 
-            <div className="relative col-span-full">
-                <div
-                >
-                    <div className="">
-                        {/* <Photo className="h-full h-screen/1.2" image={data.image} /> */}
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                layoutId={data?._id}
-                            >
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
 
-                                <video
-                                    loop autoPlay muted playsInline src={data?.video?.asset?.url}>
-                                    <source src={data?.video?.asset?.url} />
-                                </video>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-                </div>
-                <div className="absolute bottom-0 left-0 grid mt-auto size-full place-content-[bottom_left] pb-12 pl-4 xs:pl-4 sm:pl-13 md:pl-24 lg:pl-19 xl:pl-36 2xl:pl-52">
-                    <div className="mt-auto">
-                        <Heading tag="h1" fontFamily="serif" type="h1">
-                            {data.title}
-                        </Heading>
-                    </div>
-                </div>
-            </div>
-            {data.musicalObject.production && data.musicalObject.artist ? (
-                <ul className="grid grid-cols-4 gap-4 px-4 pt-8 divide-x divide-lights-0 col-span-full xs:px-4 sm:px-13 md:px-24 lg:px-19 xl:px-36 2xl:px-52 xs:grid-cols-4 sm:grid-cols-8 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-24 2xl:grid-cols-24 xs:gap-4 sm:gap-4 md:gap-6 lg:gap-6 xl:gap-6 2xl:gap-6">
-                    {data.musicalObject.production ? (
-                        <Card column="half" borderBottom="none" className="my-auto">
-                            <span className="uppercase">
-                                Production
-                            </span>
-                            <Heading type="h3" fontFamily="serif" spacing="none">
-                                {data.musicalObject.production}
-                            </Heading>
-                        </Card>
-                    ) : null}
-                    {data.musicalObject.artist ? (
-                        <Card column="half" borderBottom="none" className="pl-12 my-auto">
-                            <span className="uppercase">
-                                Artist
-                            </span>
-                            <Heading type="h3" fontFamily="serif" spacing="none">
-                                {data.musicalObject.artist}
-                            </Heading>
-                        </Card>
-                    ) : null}
-                </ul>
-            ) : null}
-        </Section>
-    )
-};
+    const handleLoaded = () => {
+      const savedTime = getTime(data._id) || 0
+      console.log('🟢 Loaded metadata. Using savedTime:', savedTime)
 
-export default ProjectTitle;
+      try {
+        video.currentTime = savedTime
+        console.log('⏱ AFTER setting currentTime =', video.currentTime)
+
+        requestAnimationFrame(() => {
+          video
+            .play()
+            .then(() => console.log('▶️ Video playing'))
+            .catch((err) => {
+              if (err.name !== 'AbortError') {
+                console.warn('ProjectTitle video.play() failed', err)
+              }
+            })
+        })
+      } catch (err) {
+        console.warn('ProjectTitle: setting currentTime failed', err)
+      }
+    }
+
+    video.addEventListener('loadedmetadata', handleLoaded)
+
+    console.log('📦 video.src =', video.src)
+    console.log('⏱ currentTime right after setting =', video.currentTime)
+
+    return () => {
+      video.removeEventListener('loadedmetadata', handleLoaded)
+    }
+  }, [data._id, getTime])
+
+  return (
+    <motion.div layoutId={data._id}>
+      <video
+        loop
+        autoPlay
+        muted
+        playsInline
+        ref={videoRef}
+        src={data?.video?.asset?.url}
+      />
+    </motion.div>
+  )
+}
+
+export default ProjectTitle
