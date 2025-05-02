@@ -290,7 +290,7 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
           </ul>
         </Section>
         <div className="absolute overflow-hidden font-sans bottom-4 right-4 text-lights-400 text-[9px]">
-          <Link target="_blank" href="https://kasperbuchholtz.dk">Website by Kasperbuchholtz.dk</Link>
+          <Link target="_blank" href="https://kasperbuchholtz.dk">Website by Kasperbuchholtz.dk</Link> og <Link target="_blank" href="https://www.emiliehjoellund.dk/">Emiliehjoellund.dk</Link>
         </div>
       </nav>
       <button
