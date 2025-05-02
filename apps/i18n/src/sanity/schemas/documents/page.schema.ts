@@ -28,7 +28,7 @@ export default defineType({
       name: 'locale',
       type: 'string',
       readOnly: true,
-      // hidden: true,
+      hidden: true,
     }),
     definePathname({
       name: 'slug',

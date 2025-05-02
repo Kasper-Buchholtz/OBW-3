@@ -71,7 +71,7 @@ function MusicalTypeCard({ data }) {
             // Card is clipped from the top (inset 100%) -> fully hidden
             gsap.set(cardRef.current, {
                 clipPath: "inset(100% 0% 0% 0%)",
-                ease: "power2.out",
+                ease: "expo.inOut",
             });
             // Heading is down 50px and invisible
             gsap.set(cardHeadingRef.current, {
@@ -82,8 +82,8 @@ function MusicalTypeCard({ data }) {
             // 2) Animate the card’s clipPath to reveal it
             gsap.to(cardRef.current, {
                 clipPath: "inset(0% 0% 0% 0%)",
-                duration: 1.0,
-                ease: "power2.out",
+                duration: 1,
+                ease: "expo.inOut",
                 scrollTrigger: {
                     trigger: cardRef.current,
                     start: "top 100%",   // adjust as needed
@@ -97,8 +97,8 @@ function MusicalTypeCard({ data }) {
             gsap.to(cardHeadingRef.current, {
                 y: 0,
                 opacity: 1,
-                duration: 1.0,
-                ease: "power2.out",
+                duration: 1,
+                ease: "expo.inOut",
                 scrollTrigger: {
                     // You can share the same trigger as the card or use the heading itself
                     trigger: cardRef.current,

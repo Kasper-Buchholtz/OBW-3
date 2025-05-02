@@ -19,7 +19,8 @@
         "MONGODB_APP_ID",
         "FASTMAIL_USER",
         "FASTMAIL_PASS",
-        "SANITY_API_WRITE_TOKEN"
+        "SANITY_API_WRITE_TOKEN",
+        "SANITY_STUDIO_VIMEO_ACCESS_TOKEN"
       ]
     },
     "lint": {

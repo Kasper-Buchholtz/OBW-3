@@ -72,7 +72,7 @@ export default function Cursor() {
     return (
         <div
             ref={cursorRef}
-            className="fixed top-0 left-0 w-8 h-8 border-2 ease-power2-in bg-lights-0 rounded-full pointer-events-none z-[9999] mix-blend-difference translate-x-[-50%] translate-y-[-50%]"
+            className="fixed top-0 left-0 w-8 h-8 ease-expo-in-out bg-lights-0 rounded-full pointer-events-none z-[9999] mix-blend-difference translate-x-[-50%] translate-y-[-50%]"
         />
     );
 }

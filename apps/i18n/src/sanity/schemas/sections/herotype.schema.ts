@@ -21,6 +21,21 @@ export const heroType = defineType({
       of: [
         defineArrayMember({
           type: 'object',
+          title: 'Indhold',
+          preview: {
+            select: {
+              title: 'link.label',
+              subtitle: 'link._ref',
+              media: 'media',
+            },
+            prepare({ title, media, subtitle }) {
+              return {
+                title: title || 'Ingen titel',
+                subtitle: subtitle,
+                media: media || undefined,
+              }
+            },
+          },
           fields: [
             defineField({
               name: 'link',
@@ -36,13 +51,12 @@ export const heroType = defineType({
         }),
       ],
     }),
-
-    {
+    defineField({
       group: 'settings',
       name: 'SectionSettings',
       title: 'Indstillinger',
       type: 'SectionSettings',
-    },
+    }),
   ],
   preview: {
     select: {

@@ -4,17 +4,11 @@
 
 @layer utilities {
   .text-shadow-0 {
-    text-shadow:
-      1px 1px 0 white,
-      -1px -1px 0 white,
-      1px -1px 0 white,
-      -1px 1px white;
-    -webkit-text-stroke:
-      1px 1px 0 white,
-      -1px -1px 0 white,
-      1px -1px 0 white,
-      -1px 1px white;
+    color: transparent;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: white;
   }
+
   .text-shadow-none {
     text-shadow: none;
   }

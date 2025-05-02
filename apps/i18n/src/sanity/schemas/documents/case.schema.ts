@@ -1,30 +1,30 @@
-import { Briefcase } from "@mynaui/icons-react";
-import { t } from "i18next";
-import { defineField, defineType } from "sanity";
+import { Briefcase } from '@mynaui/icons-react'
+import { t } from 'i18next'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: "case",
-  title: "Projekt",
-  type: "document",
+  name: 'case',
+  title: 'Projekt',
+  type: 'document',
   icon: Briefcase,
 
   groups: [
-    { name: "content", title: "Indhold" },
-    { name: "pageBuilder", title: "Sideopbygning"},
-    { name: "seo", title: "SEO" },
+    { name: 'content', title: 'Indhold' },
+    { name: 'pageBuilder', title: 'Sideopbygning' },
+    { name: 'seo', title: 'SEO' },
   ],
   fields: [
     defineField({
-      name: "caseType",
-      title: "Type",
+      name: 'caseType',
+      title: 'Type',
       type: 'string',
       options: {
         list: [
           { title: 'Fictional', value: 'fictional' },
           { title: 'Commercial', value: 'commercial' },
           { title: 'Musical', value: 'musical' },
-        ]
-      }
+        ],
+      },
     }),
 
     defineField({
@@ -62,8 +62,8 @@ export default defineType({
           name: 'production',
           title: 'Production',
           type: 'string',
-        })
-      ]
+        }),
+      ],
     }),
 
     defineField({
@@ -80,8 +80,8 @@ export default defineType({
           name: 'production',
           title: 'Production',
           type: 'string',
-        })
-      ]
+        }),
+      ],
     }),
     defineField({
       group: 'pageBuilder',
@@ -91,11 +91,10 @@ export default defineType({
       type: 'pageBuilder',
     }),
 
-
     defineField({
-      group: "seo",
-      title: "SEO",
-      description: "SEO indstillinger",
+      group: 'seo',
+      title: 'SEO',
+      description: 'SEO indstillinger',
       name: 'seoGroup',
       type: 'seoGroup',
     }),
@@ -104,15 +103,19 @@ export default defineType({
     select: {
       title: 'title',
       media: 'image',
+      slug: 'slug.current',
       subtitle: 'caseType',
     },
     prepare(selection) {
-      const {title, media, subtitle} = selection;
+      const { title, media, subtitle, slug } = selection
       return {
         title: title.charAt(0).toUpperCase() + title.slice(1),
-        subtitle: subtitle.charAt(0).toUpperCase() + subtitle.slice(1),
+        subtitle:
+          subtitle.charAt(0).toUpperCase() +
+          subtitle.slice(1) +
+          (slug ? ` /${slug}` : ''),
         media: media,
       }
-    }
-  }
-});
+    },
+  },
+})

@@ -20,54 +20,14 @@ import Photo from '../atoms/Photo'
 
 const GallerySection = ({ section }) => {
   return (
-    <Section
-    data={section}
-      paddingX='left'>
-      <Carousel 
-        slidesPerView={1.2}
-        spaceBetween={32}
-        loop={true}
-        breakpoints={{
-          0: {
-            slidesPerView: 1.2,
-            spaceBetween: 20,
-          },
-          428: {
-            slidesPerView: 1.08,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 2.5,
-            spaceBetween: 32,
-          },
-          1024: {
-            slidesPerView: 2,
-            spaceBetween: 24,
-          },
-          1280: {
-            slidesPerView: 2,
-            spaceBetween: 24,
-          },
-          1440: {
-            slidesPerView: 2.5,
-            spaceBetween: 24,
-          },
-          1920: {
-            slidesPerView: 2.2,
-            spaceBetween: 24,
-          },
-          2500: {
-            slidesPerView: 2.5,
-            spaceBetween: 24,
-          },
-        }}
-      >
-        {section.images.map((image, index) => (
-          <div key={index} className="overflow-hidden rounded-lg aspect-w-16 aspect-h-12">
-            <Photo image={image} />
-          </div>
-        ))}
-      </Carousel>
+    <Section className='grid-rows-[repeat(12, minmax(0, 320px)] h-screen '
+      data={section}
+    >
+      <div className='relative col-span-full'>
+        <Photo image={section.images[0]} className="absolute aspect-[16/9] max-w-3xl h-fit top-0 left-0" />
+        <Photo image={section.images[1]} className="absolute aspect-[16/9] right-0 bottom-0 max-w-3xl h-fit" />
+        <Photo image={section.images[2]} className="absolute aspect-[16/9] left-0 -bottom-1/3 max-w-3xl h-fit" />
+      </div>
     </Section>
   )
 }

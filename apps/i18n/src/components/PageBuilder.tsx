@@ -147,6 +147,8 @@ function renderSection(section: Section) {
       )
     case 'WatchType':
       return <WatchSection data={section} />
+    case 'ImagesType':
+      return <GallerySection section={section} />
     default:
       return null
   }
