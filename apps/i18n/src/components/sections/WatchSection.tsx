@@ -2,6 +2,7 @@
 import Section from "./Section";
 import React from 'react';
 import { VimeoPlayer } from "../molecules/VimeoPlayer";
+import Heading from "../atoms/Heading";
 
 /**
  *
@@ -18,12 +19,12 @@ import { VimeoPlayer } from "../molecules/VimeoPlayer";
 const WatchSection = ({ data }) => {
     return (
         <Section className="relative pb-24">
-            <pre>
-                <code className="text-sm text-gray-500">
-                    {data.text}
-                </code>
-            </pre>
-            <VimeoPlayer videoId={data.url} credits={data.credits} />
+            <VimeoPlayer videoId={data?.url} credits={data?.credits} fallbackImage={data?.fallback} />
+            <div className="col-span-full -mt-14 z-10">
+                <Heading>
+                    {data?.title}
+                </Heading>
+            </div>
         </Section>
     )
 };

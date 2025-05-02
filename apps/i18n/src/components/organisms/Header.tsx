@@ -36,7 +36,7 @@ export default function Header({ locale }) {
       <Section
         variant='none'
         paddingBottom={'none'} paddingTop={'none'} tag={'header'}
-        className={` fixed top-0 right-0 w-full py-4 se-grid  z-[9999999999] h-20 transition-all`}
+        className={` fixed top-0 right-0 w-full py-4 se-grid  z-[9999] h-20 transition-all`}
       >
         <Link className='col-span-2 col-start-1 md:col-span-5 xl:col-span-6' href={resolveHomeHrefLang(locale.locale)} title={locale.title}>
           <Logo className="w-full h-auto max-w-xs" variant='mørk' />

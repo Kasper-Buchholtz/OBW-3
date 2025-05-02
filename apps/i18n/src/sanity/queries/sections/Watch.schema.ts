@@ -14,8 +14,8 @@ export const WatchType = defineType({
         list: [
           { title: 'Vandret (Fuld bredde)', value: 'horizontal' },
           { title: 'Lodret (Fuld højde)', value: 'vertical' },
-        ]
-      }
+        ],
+      },
     }),
     defineField({
       name: 'title',
@@ -27,6 +27,14 @@ export const WatchType = defineType({
       type: 'string',
       title: 'Video ID',
       description: 'Vimeo video ID',
+    }),
+    defineField({
+      name: 'fallback',
+      type: 'image',
+      title: 'Fallback image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       title: 'Credits',
@@ -41,7 +49,7 @@ export const WatchType = defineType({
             select: {
               title: 'name',
               subtitle: 'role',
-            }
+            },
           },
           fields: [
             defineField({
@@ -54,9 +62,9 @@ export const WatchType = defineType({
               type: 'string',
               title: 'Role',
             }),
-          ]
-        })
-      ]
+          ],
+        }),
+      ],
     }),
   ],
   preview: {
@@ -68,6 +76,6 @@ export const WatchType = defineType({
         title: selection.title,
         subtitle: 'Watch section',
       }
-    }
-  }
+    },
+  },
 })

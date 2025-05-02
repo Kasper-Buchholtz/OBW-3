@@ -70,7 +70,7 @@ const HeadingVariants = cva(' rwx hyphens-auto', {
   },
   defaultVariants: {
     type: 'h2',
-    fontFamily: 'sans',
+    fontFamily: 'serif',
     tag: 'h2',
     spacing: 'default',
     maxWidth: 'default',
