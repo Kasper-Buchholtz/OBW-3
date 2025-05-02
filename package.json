@@ -40,6 +40,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@mynaui/icons-react": "^0.3.2",
     "@next/third-parties": "^15.0.3",
@@ -74,7 +75,7 @@
     "clsx": "^2.1.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "glazejs": "^2.0.1",
-    "gsap": "^3.12.7",
+    "gsap": "^3.13.0",
     "lenis": "^1.1.16",
     "motion": "^11.15.0",
     "next": "^15.0.3",

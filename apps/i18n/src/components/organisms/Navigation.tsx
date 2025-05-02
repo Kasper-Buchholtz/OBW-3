@@ -65,6 +65,9 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Section from '../sections/Section'
 import Noise from '../interactions/Noise'
+import Link from 'next/link'
+import { ArrowDown } from '@mynaui/icons-react'
+import { ArrowTopRightIcon } from '@sanity/icons'
 
 const navItems = [
   { label: "About", href: "/about" },
@@ -89,7 +92,7 @@ const navItems = [
   { label: "Contact", href: "#" },
 ];
 
-const Navigation = ({ isOpen, handleClick,locale }) => {
+const Navigation = ({ isOpen, handleClick, locale }) => {
   const navRef = useRef(null);
   const navItemsRef = useRef(null);
   const buttonRef = useRef(null);
@@ -101,7 +104,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
       // Animate the main navigation menu open
       gsap.set(navItemsRef.current.children, {
         opacity: 0,
-        y: -50,
+        y: 20,
       })
       gsap.fromTo(
         navRef.current,
@@ -109,7 +112,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
         {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           duration: 0.7,
-          ease: "power3.inOut",
+          ease: "expo.inOut",
           onStart: () => {
             gsap.set(navRef.current, { visibility: "visible" });
             gsap.fromTo(
@@ -118,7 +121,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
               {
                 opacity: 1,
                 duration: 0.5,
-                ease: "power3.out",
+                ease: "expo.out",
                 visibility: "visible",
               }
             );
@@ -127,9 +130,10 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
             gsap.to(navItemsRef.current.children, {
               opacity: 1,
               y: 0,
-              stagger: 0.05,
+              stagger: 0.1,
               duration: 0.5,
-              ease: "power3.inOut",
+              ease: "expo.inOut",
+
             });
           },
         }
@@ -138,10 +142,10 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
       // Animate the main navigation menu close
       gsap.to(navItemsRef.current.children, {
         opacity: 0,
-        y: -50,
+        y: 20,
         stagger: 0.1,
         duration: 0.5,
-        ease: "power3.inOut",
+        ease: "expo.inOut",
       });
 
       // Close all open submenus when main navigation closes
@@ -154,13 +158,13 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
             x: -100,
             opacity: 0,
             duration: 0.5,
-            ease: "power3.inOut",
+            ease: "expo.inOut",
             stagger: 0.1, // Stagger effect for closing
           });
 
           setTimeout(() => {
             // Ensure height is reset after animation
-            gsap.set(submenu, { });
+            gsap.set(submenu, {});
           }, 500); // Delay matching the animation duration
         }
       });
@@ -168,7 +172,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
       gsap.to(navRef.current, {
         clipPath: "polygon(0% 0%, 0% 0%, 100% 100%, 100% 100%)",
         duration: 0.7,
-        ease: "power3.inOut",
+        ease: "expo.inOut",
         delay: 0.5,
         onComplete: () => {
           gsap.set(navRef.current, { visibility: "hidden" });
@@ -179,7 +183,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
         opacity: 0,
         delay: 0.5,
         duration: 0.5,
-        ease: "power3.inOut",
+        ease: "expo.inOut",
       });
 
       // Reset all open submenus state
@@ -206,7 +210,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
           x: 0,
           opacity: 1,
           duration: 0.5,
-          ease: "power3.inOut",
+          ease: "expo.inOut",
           stagger: 0.1, // Stagger effect for opening
         }
       );
@@ -214,7 +218,7 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
       gsap.to(submenu, {
         opacity: 1, // Show submenu
         duration: 0.5,
-        ease: "power3.inOut",
+        ease: "expo.inOut",
       });
     } else {
       // Close submenu: animate children with stagger
@@ -242,54 +246,54 @@ const Navigation = ({ isOpen, handleClick,locale }) => {
         className="fixed top-0 left-0 z-50 flex w-full h-full pt-20 font-serif bg-darks-900 nav se-grid"
       >
         <div className='absolute inset-0 pointer-events-none size-full'>
-          <Noise 
-    patternSize={100  }
-    patternScaleX={2.5}
-    patternScaleY={2.9}
-    patternRefreshInterval={2}
-    patternAlpha={20}
-  /></div>
+          <Noise
+            patternSize={100}
+            patternScaleX={2.5}
+            patternScaleY={2.9}
+            patternRefreshInterval={2}
+            patternAlpha={20}
+          /></div>
 
         <Section variant='none' className='w-full'>
-        <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto space-y-10 h-fit -col-end-1 col-span-full">
-          {navItems.map((item, index) => (
-            <li key={item.label}>
-              {item.subLinks ? (
-                <React.Fragment>
-                  {/* Clicking this button toggles the submenu */}
+          <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto space-y-10 h-fit -col-end-1 col-span-full">
+            {navItems.map((item, index) => (
+              <li key={item.label}>
+                {item.subLinks ? (
+                  <React.Fragment>
+                    {/* Clicking this button toggles the submenu */}
                     <button
-                    className={`text-giant transition-colors hover:text-lights-0  ${openSubmenus[index] ? "text-lights-0" : "text-shadow-0"}`}
-                    onClick={() => toggleSubmenu(index)}
+                      className={`text-giant transition-colors ease-expo-in-out hover:text-lights-0  ${openSubmenus[index] ? "text-lights-0" : "text-shadow-0"}`}
+                      onClick={() => toggleSubmenu(index)}
                     >
-                    {item.label}
+                      {item.label}
                     </button>
                     <ul
-                    className={`submenu-${index} absolute overflow-hidden translate-x-0 -translate-y-1/2 -right-0 top-1/2`}
-                    style={{ opacity: 0 }}
+                      className={`submenu-${index} absolute overflow-hidden translate-x-0 -translate-y-1/2 -right-0 top-1/2`}
+                      style={{ opacity: 0 }}
                     >
-                    {item.subLinks.map((subItem) => (
-                      <li key={subItem.label}>
-                      <a className="w-full text-lights-0 text-large" href={subItem.href}>
-                        {subItem.label}
-                      </a>
-                      </li>
-                    ))}
+                      {item.subLinks.map((subItem) => (
+                        <li key={subItem.label}>
+                          <Link className="w-full flex gap-3 duration-500 text-lights-0 text-large" href={subItem.href}>
+                            {subItem.label}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
-                </React.Fragment>
-              ) : (
-                <a className="w-full text-giant text-shadow-0" href={item.href}>
-                  {item.label}
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
+                  </React.Fragment>
+                ) : (
+                  <Link className="hover:text-lights-0 duration-500 ease-expo-in-out w-full text-giant text-shadow-0" href={item.href}>
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
         </Section>
         <div className="absolute overflow-hidden font-sans bottom-4 right-4 text-lights-400 text-[9px]">
-          <a target="_blank" href="https://kasperbuchholtz.dk">Website by Kasperbuchholtz.dk</a>
+          <Link target="_blank" href="https://kasperbuchholtz.dk">Website by Kasperbuchholtz.dk</Link>
         </div>
       </nav>
-      <button 
+      <button
         ref={buttonRef}
         style={{ visibility: "hidden" }}
         onClick={handleClick}

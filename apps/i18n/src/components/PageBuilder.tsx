@@ -83,38 +83,15 @@ function renderSection(section: Section) {
     case 'CallToAction2':
       return <CallToActionSection2 section={section} />
     case 'hero':
-      return (
-        <React.Fragment>
-          <Hero data={section} />
-          <Breadcrumbs />
-        </React.Fragment>
-      )
+      return <Hero data={section} />
     case 'Hero2':
-      return (
-        <React.Fragment >
-          <Hero2 data={section} />
-          <Breadcrumbs />
-        </React.Fragment>
-      )
+      return <Hero2 data={section} />
     case 'Hero3':
-      return (
-        <React.Fragment >
-          <Hero3 data={section} />
-          <Breadcrumbs />
-        </React.Fragment>
-      )
+      return <Hero3 data={section} />
     case 'LogoGallery':
-      return (
-        <React.Fragment >
-          <LogoGallery data={section} />
-        </React.Fragment>
-      )
+      return <LogoGallery data={section} />
     case 'LogoGallery2':
-      return (
-        <React.Fragment >
-          <LogoGallery2 data={section} />
-        </React.Fragment>
-      )
+      return <LogoGallery2 data={section} />
     case 'textWithIllustration':
       return <TextWithIllustration data={section} />
     case 'contactFormType':
@@ -136,15 +113,11 @@ function renderSection(section: Section) {
         />
       )
     case 'textContainer':
-      return (
-        <TextContainer data={section} />
-      )
+      return <TextContainer data={section} />
     case 'MediaType':
       return <Media data={section} index={undefined} />
     case 'projectsType':
-      return (
-        <ProjectsTypeSection data={section} />
-      )
+      return <ProjectsTypeSection data={section} />
     case 'WatchType':
       return <WatchSection data={section} />
     case 'ImagesType':

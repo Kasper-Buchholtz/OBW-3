@@ -39,8 +39,8 @@ export const VimeoPlayer = ({
 
     return (
         <div className="flex flex-col items-center text-white col-span-full relative">
-            <button className="w-full h-full" onClick={ShowVideo}>
-                {fallbackImage.asset.url ? (
+            <button className="w-full h-screen/1.6 md:h-full" onClick={ShowVideo}>
+                {fallbackImage?.asset?.url ? (
                     <Photo
                         image={fallbackImage}
                         className="w-full h-screen/1.6 md:h-full object-cover cursor-pointer"

@@ -38,14 +38,31 @@ const Hero: React.FC<HeroProps> = ({ data, ...props }) => {
 
     if (!videoUrl || !videoContainerRef.current) return
 
-    // Fade out
+    // Fade out with clip-path animation
     gsap.to(videoContainerRef.current, {
-      duration: 0,
+      duration: 0.5,
+      clipPath: 'inset(0% 0% 100% 0%)',
+      opacity: 0,
+      filter: 'blur(10px)',
+      ease: 'expo.in',
       onComplete: () => {
-        // Once faded, set the new video and fade in
-        gsap.to(videoContainerRef.current, {
-        })
         setCurrentVideo(videoUrl)
+
+        gsap.fromTo(
+          videoContainerRef.current,
+          {
+            clipPath: 'inset(100% 0% 0% 0%)',
+            opacity: 0,
+            filter: 'blur(10px)',
+          },
+          {
+            duration: 0.7,
+            clipPath: 'inset(0% 0% 0% 0%)',
+            opacity: 1,
+            ease: 'expo.out',
+            filter: 'blur(0px)',
+          }
+        )
       },
     })
   }
@@ -55,7 +72,7 @@ const Hero: React.FC<HeroProps> = ({ data, ...props }) => {
       {...props}
       data={data}
       variant="none"
-      className="relative h-screen overflow-hidden place-content-center"
+      className="relative h-screen overflow-hidden place-content-center bg-darks-900"
     >
       <Herovideo
         currentVideo={currentVideo}
@@ -93,11 +110,14 @@ interface HeroVideoProps {
  * Simple container for the video. We attach the ref here
  * so GSAP can fade the entire container in/out.
  */
+
 function Herovideo({ currentVideo, videoRef, videoContainerRef }: HeroVideoProps) {
+
   return (
     <div
       ref={videoContainerRef}
-      className="absolute inset-0 opacity-100 bg-darks-900 size-full"
+      className="absolute inset-0 opacity-100 bg-darks-900 size-full will-change-[clip-path]"
+
     >
       <video
         ref={videoRef}

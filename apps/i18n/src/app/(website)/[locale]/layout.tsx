@@ -16,7 +16,7 @@ const sans = Inter({
   display: 'swap',
   variable: '--font-sans',
 })
- 
+
 const serif = DM_Serif_Display({
   subsets: ['latin'],
   display: 'swap',
@@ -49,6 +49,7 @@ export default async function RootLayout({
             __html: settings?.headScripts,
           }}
         />
+
         {children}
         <SanityLive />
         {(await draftMode()).isEnabled && (

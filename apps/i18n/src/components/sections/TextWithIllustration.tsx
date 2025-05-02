@@ -28,14 +28,14 @@ const TextWithIllustration = ({
     '-mx-4 md:mx-0 md:-mr-24 md:-mt-16 md:-mb-20 md:-ml-3 xl:-mr-36 2xl:-mr-52'
   return (
     <>
-      <Section 
+      <Section
         data={data}
-        className='overflow-hidden'
+        className='overflow-hidden h-screen'
       >
         {data?.flip ? (
           <>
             <div
-              className={`${marginOne} relative h-screen/2 md:h-screen/1.6 block col-start-1 -col-end-1 md:col-start-1 md:flex md:-col-end-7 xl:col-start-1 xl:col-end-13 2xl:col-start-1 2xl:col-end-13  ${flip ? '' : ''}`}
+              className={`${marginOne} relative h-screen block col-start-1 -col-end-1 md:col-start-1 md:flex md:-col-end-7 xl:col-start-1 xl:col-end-13 2xl:col-start-1 2xl:col-end-13  ${flip ? '' : ''}`}
             >
               <Media showInPopup data={data?.MediaObject?.media} />
             </div>
@@ -46,7 +46,7 @@ const TextWithIllustration = ({
         ) : (
           <>
             <div
-              className={` ${marginTwo} relative h-screen/2 md:h-screen/1.6 block col-start-1 -col-end-1 md:-col-start-1 md:flex md:col-end-7 xl:-col-start-1 xl:-col-end-13 2xl:-col-start-1 2xl:-col-end-13 ${flip ? 'md:flex-row-reverse' : ''}`}
+              className={` ${marginTwo} relative h-screen block col-start-1 -col-end-1 md:-col-start-1 md:flex md:col-end-7 xl:-col-start-1 xl:-col-end-13 2xl:-col-start-1 2xl:-col-end-13 ${flip ? 'md:flex-row-reverse' : ''}`}
             >
               <Media showInPopup data={data?.MediaObject?.media} />
             </div>

@@ -1,3 +1,5 @@
+import exp from 'constants'
+
 const { createClient } = require('@sanity/client')
 // Initialize Sanity client
 const client = createClient({
@@ -77,6 +79,9 @@ const nextConfig = {
         hostname: 'cdn.shopify.com',
       },
     ],
+  },
+  experimental: {
+    viewTransition: true,
   },
 }
 module.exports = nextConfig

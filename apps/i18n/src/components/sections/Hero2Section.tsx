@@ -32,42 +32,17 @@ const Hero2: React.FC<HeroProps> = ({ data, ...props }) => {
     <>
       <Section
         {...props}
-        className="max-h-screen pt-40 md:pt-30"
+        className="h-screen relative pt-40 md:pt-30"
         paddingTop="none"
         paddingBottom="none"
       >
-        {data?.design?.color?.color === 'default' ? (
-          <div className="bg-superego-green col-span-full h-screen/1.6 lg:h-screen/1.2 absolute top-0 right-0 w-full" />
-        ) : data?.design?.color?.color === 'secondary' ? (
-          <div className="bg-superego-purple col-span-full h-screen/1.6 lg:h-screen/1.2 absolute top-0 right-0 w-full" />
-        ) : (
-          <div className="bg-superego-green col-span-full h-screen/1.6 lg:h-screen/1.2 absolute top-0 right-0 w-full" />
-        )}
-        <div className="col-span-full rounded-xl overflow-hidden h-screen/1.6 lg:h-screen/1.2 relative">
-          {/* <Media data={data?.MediaObject?.media} /> */}
-
-          <div className="absolute z-10 w-full h-full translate-x-1/2 -translate-y-1/2 pointer-events-none top-1/2 right-1/2 bg-superego-black/45" />
-
-          <div className="absolute z-20 w-full px-4 text-center translate-x-1/2 -translate-y-1/2 top-1/2 right-1/2 text-superego-light-base">
-            <Heading spacing="small" tag="h1" type="h1">
-              {data.title}
-            </Heading>
-
-            {data?.MediaObject?.media.videoObject && (
-              <button onClick={OpenModal} className="z-40 text-white ">
-                Afspil video
-              </button>
-            )}
-          </div>
-{/*           {data?.MediaObject?.media?.videoObject?.video && (
-            <AnimatePresence mode="sync">
-              {isOpen && (
-                <Modal openModal={OpenModal}>
-                  <Media data={data?.MediaObject?.media} />
-                </Modal>
-              )}
-            </AnimatePresence>
-          )} */}
+        <div className='absolute inset-0 h-screen size-full'>
+          <Media data={data?.MediaObject?.media} />
+        </div>
+        <div className="absolute z-20 w-full px-4 flex items-end h-screen bottom-0 left-0 text-superego-light-base px-4 xs:px-4 sm:px-13 md:px-24 lg:px-19 xl:px-36 2xl:px-52">
+          <Heading spacing="small" tag="h1" type="h1">
+            {data.title}
+          </Heading>
         </div>
       </Section>
     </>

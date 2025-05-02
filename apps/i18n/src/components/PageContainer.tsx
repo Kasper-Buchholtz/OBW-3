@@ -1,9 +1,7 @@
 'use client'
-import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import { Lenis } from '@/components/Lenis'
 import Cursor from './interactions/Cursor'
-
 /**
  *
  * @returns: En container, der indeholder header, footer og børnekomponenter.
@@ -50,7 +48,7 @@ export default function PageContainer({
     <>
       <Header locale={locale} />
       <Lenis options={lenis} root={typeof document !== 'undefined' ? document.documentElement : null} />
-      <main className={` min-h-screen bg-superego-light-light`}>
+      <main className={` min-h-screen bg-superego-light-light`} >
         {children}
       </main>
       <Cursor />

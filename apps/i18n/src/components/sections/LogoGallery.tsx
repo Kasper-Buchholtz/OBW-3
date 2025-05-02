@@ -19,21 +19,22 @@ import Photo from '../atoms/Photo'
 
 const LogoGallery = ({ data }) => {
   return (
-    <Section
-      data={data}
-      className="bg-superego-green">
-      <div className="col-span-full">
-        <Heading size="h2" className="mb-4">
-          {data.title}
-        </Heading>
+    <Section data={data} className='h-screen'>
+      <div className='col-span-full my-auto'>
+        <div className="col-span-full">
+          <Heading size="h2" className="mb-4">
+            {data.title}
+          </Heading>
+        </div>
+        <ul className="grid grid-cols-1 gap-4  col-span-full sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5 md:p-12 md:flex-row">
+          {data.images.map((image, index) => (
+            <li className='aspect-w-16 aspect-h-9' key={index}>
+              <Photo image={image} className='object-contain' />
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="grid grid-cols-1 gap-4 p-4 bg-white shadow-lg col-span-full sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 md:p-12 md:flex-row rounded-2xl">
-        {data.images.map((image, index) => (
-          <div className='aspect-w-7 aspect-h-5' key={index}>
-            <Photo image={image} />
-          </div>
-        ))}
-      </div>
+
     </Section>
   )
 }
