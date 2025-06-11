@@ -18,9 +18,8 @@ _type == "projectsType" => {
         ${ImageQuery}
       },
       commercialObj,
-      musicalObject
+      musicalObject,
+      FictionalObject
     }
       }
 `
-
-  

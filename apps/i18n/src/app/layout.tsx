@@ -5,8 +5,8 @@ export default async function RootLayout({
   children,
 }) {
   return (
-    <html >
-      <body>
+    <html>
+      <body className='selection:bg-lights-0 selection:text-darks-900'>
         {children}
       </body>
     </html>

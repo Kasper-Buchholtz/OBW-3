@@ -117,7 +117,6 @@ function Herovideo({ currentVideo, videoRef, videoContainerRef }: HeroVideoProps
     <div
       ref={videoContainerRef}
       className="absolute inset-0 opacity-100 bg-darks-900 size-full will-change-[clip-path]"
-
     >
       <video
         ref={videoRef}

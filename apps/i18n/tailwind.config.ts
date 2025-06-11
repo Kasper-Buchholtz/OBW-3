@@ -3,7 +3,7 @@
 import type { Config } from 'tailwindcss'
 import sharedConfig from '@repo/tailwind-config'
 
-const config: Pick<Config, 'content' | 'presets' | 'theme'> = {
+const config: Pick<Config, 'content' | 'presets' | 'theme' | 'plugins'> = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',

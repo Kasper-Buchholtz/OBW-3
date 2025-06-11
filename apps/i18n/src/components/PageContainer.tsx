@@ -32,15 +32,15 @@ export default function PageContainer({
 }: {
   locale: {},
   lenis?: {
-    lerp: number,
-    duration: number,
-    smoothTouch: boolean,
-    smooth: boolean,
-    easing: (t: number) => number,
-    orientation: string,
-    gestureOrientation: string,
-    smoothWheel: boolean,
-    touchMultiplier: number,
+    lerp?: number,
+    duration?: number,
+    smoothTouch?: boolean,
+    smooth?: boolean,
+    easing?: (t: number) => number,
+    orientation?: string,
+    gestureOrientation?: string,
+    smoothWheel?: boolean,
+    touchMultiplier?: number,
   },
   children: React.ReactNode,
 }) {
@@ -48,7 +48,7 @@ export default function PageContainer({
     <>
       <Header locale={locale} />
       <Lenis options={lenis} root={typeof document !== 'undefined' ? document.documentElement : null} />
-      <main className={` min-h-screen bg-superego-light-light`} >
+      <main className="min-h-screen bg-lights-0">
         {children}
       </main>
       <Cursor />
