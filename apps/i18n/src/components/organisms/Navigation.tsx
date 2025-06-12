@@ -97,7 +97,6 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
   const navItemsRef = useRef(null);
   const buttonRef = useRef(null);
   const [openSubmenus, setOpenSubmenus] = useState({}); // Manage open submenus state
-  const creditRef = useRef(null)
 
   useEffect(() => {
     if (isOpen) {

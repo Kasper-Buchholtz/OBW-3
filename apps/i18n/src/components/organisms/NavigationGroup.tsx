@@ -23,7 +23,7 @@ type NavigationGroupProps = {
 const NavigationGroup = ({ locale, isOpen, setIsOpen }: NavigationGroupProps) => {
     return (
         <div className='flex justify-end col-start-4 gap-6 md:col-start-6 xl:col-start-8 -col-end-1'>
-            <LocaleSwitcher view="desktop" className='' locale={locale} />
+            {/* <LocaleSwitcher view="desktop" className='' locale={locale} /> */}
             <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
     )
