@@ -3,13 +3,13 @@ import React from 'react';
 import { loadPage } from '@/sanity/queries/loadPage';
 import PageContainer from '@/components/PageContainer';
 import { notFound } from 'next/navigation';
-import { commercial_PROJECT_QUERY } from '@/sanity/lib/sanity.queries';
+import { musical_PROJECT_QUERY } from '@/sanity/lib/sanity.queries';
 import { generatePageMetadata } from '@/utils/metadataUtils';
 import ProjectTitle from '@/components/sections/ProjectTitle';
 import { PageBuilder } from '@/components/PageBuilder';
 import CommercialCredit from '@/components/sections/CommercialCredit';
-import { CommercialType } from '@/components/molecules/CommercialType';
-import FictionalProjectTitle from '@/components/molecules/FictionalProjectTitle';
+import { MusicalType } from '@/components/molecules/MusicalType';
+import MusicalProjectTitle from '@/components/molecules/MusicalProjectTitle';
 
 export interface Params {
     slug: string[];
@@ -23,7 +23,7 @@ export default async function DynamicRoute({
 }) {
     const { slug: slugArray, locale: locale } = await params
     const slug = slugArray.join('/');
-    const page = await loadPage(slug, locale, commercial_PROJECT_QUERY) as unknown as any;
+    const page = await loadPage(slug, locale, musical_PROJECT_QUERY) as unknown as any;
 
     if (!page) {
         notFound();
@@ -31,7 +31,7 @@ export default async function DynamicRoute({
 
     return (
         <PageContainer locale={page.localeInfo}>
-            <FictionalProjectTitle data={page} />
+            <MusicalProjectTitle data={page} />
             {page.pageBuilder &&
                 <PageBuilder
                     documentId={page._id}
@@ -48,7 +48,7 @@ export default async function DynamicRoute({
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string[] }> }) {
     const { slug: slugArray, locale: locale } = await params
     const slug = slugArray.join('/');
-    const page = await loadPage(slug, locale, commercial_PROJECT_QUERY);
+    const page = await loadPage(slug, locale, musical_PROJECT_QUERY);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
     return generatePageMetadata({ locale }, page, baseUrl);
 }

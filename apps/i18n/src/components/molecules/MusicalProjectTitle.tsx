@@ -30,25 +30,25 @@ const MusicalProjectTitle = ({ data }) => {
                     </div>
                 </div>
             </div>
-            {data?.musicalObject?.production && data?.musicalObject?.artist ? (
+            {data?.production && data?.artist ? (
                 <ul className="grid grid-cols-4 gap-4 px-4 pt-8 divide-x divide-lights-0 col-span-full xs:px-4 sm:px-13 md:px-24 lg:px-19 xl:px-36 2xl:px-52 xs:grid-cols-4 sm:grid-cols-8 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-24 2xl:grid-cols-24 xs:gap-4 sm:gap-4 md:gap-6 lg:gap-6 xl:gap-6 2xl:gap-6">
-                    {data?.musicalObject?.production ? (
+                    {data?.production ? (
                         <Card column="half" borderBottom="none" className="my-auto">
                             <span className="uppercase">
                                 Production
                             </span>
                             <Heading type="h3" fontFamily="serif" spacing="none">
-                                {data?.musicalObject?.production}
+                                {data?.production}
                             </Heading>
                         </Card>
                     ) : null}
-                    {data?.musicalObject?.artist ? (
+                    {data?.artist ? (
                         <Card column="half" borderBottom="none" className="pl-12 my-auto">
                             <span className="uppercase">
                                 Artist
                             </span>
                             <Heading type="h3" fontFamily="serif" spacing="none">
-                                {data?.musicalObject?.artist}
+                                {data?.artist}
                             </Heading>
                         </Card>
                     ) : null}

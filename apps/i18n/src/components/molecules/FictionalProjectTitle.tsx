@@ -47,11 +47,11 @@ const FictionalProjectTitle = ({ data }) => {
             <div className="col-span-full flex gap-12 items-center -mt-20 z-10">
                 <div className="col-span-full pl-4 xs:pl-4 sm:pl-13 md:pl-24 lg:pl-19 xl:pl-36 2xl:pl-52 grow-0">
                     <Paragraph className="text-medium max-w-prose">
-                        {data.FictionalObject.description}
+                        {data.description}
                     </Paragraph>
                 </div>
                 <div className="max-w-screen-md pr-4 xs:pr-4 sm:pr-13 md:pr-24 lg:pr-19 xl:pr-36 2xl:pr-52 shrink-0">
-                    <Photo className="h-fit w-full" image={data.FictionalObject.poster} />
+                    <Photo className="h-fit w-full" image={data.poster} />
                 </div>
             </div>
         </Section >

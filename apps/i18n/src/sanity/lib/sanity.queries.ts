@@ -257,6 +257,66 @@ export const commercial_PROJECT_QUERY = groq`
 }
 `
 
+export const fictional_PROJECT_QUERY = groq`
+*[_type == "fictionalCase" && slug.current == $slug][0] {
+  ...,
+  _type,
+  "localeInfo": {
+    locale,
+    "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      title,
+      _type,
+      slug,
+      locale
+    },
+  },
+  ${SEO_QUERY},
+  ${pageBuilderQuery},
+  image{
+    ${ImageQuery}
+  },
+  video{
+   ${ImageQuery}
+  },
+  FictionalObject {
+  cast[],
+  description,
+  director,
+  production,
+  releaseYear,
+  poster {
+    asset-> {
+      _id,
+      url,
+      _type,
+      altText,
+      description,
+      title,
+      metadata {
+        blurHash,
+        dimensions
+      }
+    },
+    crop {
+      top,
+      left,
+      bottom,
+      _type,
+      right
+    },
+    hotspot {
+      _type,
+      width,
+      x,
+      y,
+      height
+    }
+  }
+}
+
+}
+`
+
 export const PROJECT_QUERY = groq`
 *[_type == "case" && slug.current == $slug][0] {
   ...,
@@ -313,6 +373,64 @@ export const PROJECT_QUERY = groq`
     }
   }
 }
+
+}
+`
+
+export const musical_PROJECT_QUERY = groq`
+*[_type == "musicalCase" && slug.current == $slug][0] {
+  ...,
+  _type,
+  "localeInfo": {
+    locale,
+    "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      title,
+      _type,
+      slug,
+      locale
+    },
+  },
+  ${SEO_QUERY},
+  ${pageBuilderQuery},
+  image{
+    ${ImageQuery}
+  },
+  video{
+   ${ImageQuery}
+  },
+  cast[],
+  description,
+  director,
+  production,
+  releaseYear,
+  poster {
+    asset-> {
+      _id,
+      url,
+      _type,
+      altText,
+      description,
+      title,
+      metadata {
+        blurHash,
+        dimensions
+      }
+    },
+    crop {
+      top,
+      left,
+      bottom,
+      _type,
+      right
+    },
+    hotspot {
+      _type,
+      width,
+      x,
+      y,
+      height
+    }
+  }
 
 }
 `
