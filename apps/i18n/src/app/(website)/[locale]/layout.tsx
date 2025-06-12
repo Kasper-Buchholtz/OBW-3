@@ -11,6 +11,8 @@ import Script from 'next/script'
 import Appconfig from 'config'
 import { DM_Serif_Display, Inter } from 'next/font/google';
 import PageLoader from '@/components/molecules/PageLoader'
+import { PostHogProvider } from '@/components/providers'
+import posthog from 'posthog-js'
 
 const sans = Inter({
   subsets: ['latin'],
@@ -51,7 +53,9 @@ export default async function RootLayout({
           }}
         />
 
-        {children}
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
         <PageLoader />
         <SanityLive />
         {(await draftMode()).isEnabled && (

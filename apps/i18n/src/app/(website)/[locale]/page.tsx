@@ -6,7 +6,6 @@ import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
 import { generatePageMetadata } from '@/utils/metadataUtils'
 import 'swiper/css'
-import AutoScrollWrapper from '@/components/GSAPScrollSection'
 
 export default async function IndexRoute({
   params,
@@ -20,25 +19,15 @@ export default async function IndexRoute({
   }
 
   return (
-    <AutoScrollWrapper
-      delay={1.5}        // Wait 1.5 seconds before scrolling
-      duration={2.5}     // Take 2.5 seconds to complete the scroll
-      ease="power2.out"  // Smooth easing
-      trigger="pageLoad" // Start after page loads
-      onScrollComplete={() => {
-        console.log('Scroll animation completed!')
-      }}
-    >
-      <PageContainer locale={page.localeInfo}>
-        {page.pageBuilder &&
-          <PageBuilder
-            documentId={page._id}
-            documentType={page._type}
-            sections={page.pageBuilder}
-          />
-        }
-      </PageContainer>
-    </AutoScrollWrapper>
+    <PageContainer locale={page.localeInfo}>
+      {page.pageBuilder &&
+        <PageBuilder
+          documentId={page._id}
+          documentType={page._type}
+          sections={page.pageBuilder}
+        />
+      }
+    </PageContainer>
   );
 }
 
