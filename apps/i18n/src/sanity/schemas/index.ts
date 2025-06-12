@@ -48,6 +48,9 @@ import { MediaObject } from './sections/atoms/MediaObject.schema'
 import { WatchType } from '../queries/sections/Watch.schema'
 import { ImagesType } from './sections/Images.schema'
 import { projectsType } from './sections/projectsType.schema'
+import commercialCase from './documents/cases/commercial.case.schema'
+import fictionalCase from './documents/cases/fictional.case.schema'
+import musicalCase from './documents/cases/musical.case.schema'
 
 export const schemaTypes = [
   heroType,
@@ -92,6 +95,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Pages
     page,
     caseSchema,
+    commercialCase,
+    musicalCase,
+    fictionalCase,
     event,
     article,
     position,

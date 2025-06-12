@@ -58,7 +58,7 @@ export function PageBuilder({
       }).toString()}
     >
       {sections.map((section) => (
-        <div className='debug-screens'
+        <div className=''
           key={section._key || randomKey()}
           data-sanity={createDataAttribute({
             ...sanityConfig,

@@ -23,6 +23,13 @@ export function CommercialTypeCard({ data, index }) {
                 href={resolveHrefLang(data.locale, data._type, data.slug.current)}
                 title={data?.title}
             >
+                {data?.client ? (
+                    <div className="overflow-hidden">
+                        <Paragraph className="text-center font-sans opacity-0 translate-y-full group-hover:opacity-100 duration-500 group-hover:translate-y-0 transition-all ease-expo-in-out delay-100 ">
+                            {data?.client}
+                        </Paragraph>
+                    </div>
+                ) : null}
                 <div className="overflow-hidden">
                     <Heading
                         spacing="none"
@@ -33,13 +40,6 @@ export function CommercialTypeCard({ data, index }) {
                         {data?.title}
                     </Heading>
                 </div>
-                {data?.commercialObj?.client ? (
-                    <div className="overflow-hidden">
-                        <Paragraph className="text-center font-sans opacity-0 translate-y-full group-hover:opacity-100 duration-500 group-hover:translate-y-0 transition-all ease-expo-in-out delay-100 ">
-                            {data?.commercialObj?.client}
-                        </Paragraph>
-                    </div>
-                ) : null}
             </Link>
             <Photo image={data?.image} className="h-full w-full peer-hover:scale-110 transition duration-500 ease-expo-in-out pointer-events-none" />
         </li>

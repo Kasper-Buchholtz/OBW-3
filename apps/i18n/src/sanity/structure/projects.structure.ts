@@ -7,34 +7,11 @@ import {
   Music,
   Sparkles,
   Tag,
+  Store,
+  Compass,
 } from '@mynaui/icons-react'
 
 export default defineStructure<ListItemBuilder>(async (S, context) => {
-  const client = context.getClient({ apiVersion: '2023-01-01' })
-
-  // Define case types with their display names and icons
-  const caseTypes = [
-    { value: 'fictional', title: 'Fictional', icon: Sparkles },
-    { value: 'commercial', title: 'Commercial', icon: Film },
-    { value: 'musical', title: 'Musical', icon: Music },
-  ]
-
-  // Create dynamic folders for each case type
-  const dynamicCaseTypeFolders = caseTypes.map((caseType) =>
-    S.listItem()
-      .title(caseType.title)
-      .icon(caseType.icon)
-      .child(
-        S.documentList()
-          .title(`${caseType.title} Cases`)
-          .filter('_type == "case" && caseType == $caseType')
-          .params({ caseType: caseType.value })
-          .child((documentId) =>
-            S.document().documentId(documentId).schemaType('case'),
-          ),
-      ),
-  )
-
   return S.listItem()
     .title('Cases')
     .icon(Briefcase)
@@ -53,20 +30,42 @@ export default defineStructure<ListItemBuilder>(async (S, context) => {
                   S.document().documentId(documentId).schemaType('case'),
                 ),
             ),
-          S.divider(),
-          ...dynamicCaseTypeFolders,
-          S.divider(),
           S.listItem()
-            .title('Kategori')
-            .icon(Tag)
+            .title('Commercial Cases')
+            .icon(Store)
+            .id('commercialCases1')
             .child(
-              S.documentTypeList('category')
-                .title('Kategori')
+              S.documentTypeList('commercialCase')
+                .title('Commercial Cases')
                 .child((documentId) =>
                   S.document()
                     .documentId(documentId)
-                    .schemaType('category')
-                    .views([S.view.form().id('categoryEditor')]),
+                    .schemaType('commercialCase'),
+                ),
+            ),
+          S.listItem()
+            .title('Fictional Cases')
+            .icon(Compass)
+            .id('fictionalCases1')
+            .child(
+              S.documentTypeList('fictionalCase')
+                .title('Fictional Cases')
+                .child((documentId) =>
+                  S.document()
+                    .documentId(documentId)
+                    .schemaType('fictionalCase'),
+                ),
+            ),
+
+          S.listItem()
+            .title('Musical Cases')
+            .icon(Music)
+            .id('musicalCases1')
+            .child(
+              S.documentTypeList('musicalCase')
+                .title('Musical Cases')
+                .child((documentId) =>
+                  S.document().documentId(documentId).schemaType('musicalCase'),
                 ),
             ),
         ]),

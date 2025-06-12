@@ -7,7 +7,6 @@ export default defineType({
   title: 'Projekt',
   type: 'document',
   icon: Briefcase,
-
   groups: [
     { name: 'content', title: 'Indhold' },
     { name: 'pageBuilder', title: 'Sideopbygning' },
@@ -41,9 +40,20 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'locale',
+      title: 'Sprog',
+      type: 'string',
+      readOnly: true,
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
+    }),
+    defineField({
+      name: 'video',
+      title: 'Video',
+      type: 'file',
     }),
 
     defineField({
@@ -87,8 +97,17 @@ export default defineType({
       title: 'Fictional',
       type: 'object',
       hidden: ({ parent }) => parent?.caseType !== 'fictional',
+      groups: [
+        { name: 'production', title: 'Produktion' },
+        { name: 'director', title: 'Instruktør' },
+        { name: 'releaseYear', title: 'Udgivelses år' },
+        { name: 'cast', title: 'Cast' },
+        { name: 'poster', title: 'Plakat' },
+        { name: 'description', title: 'Beskrivelse' },
+      ],
       fields: [
         defineField({
+          group: 'production',
           name: 'production',
           title: 'Production',
           type: 'string',
@@ -99,11 +118,13 @@ export default defineType({
           title: 'Instruktør',
           type: 'string',
           initialValue: 'Oliver Birk Wisholm',
+          group: 'director',
         }),
         defineField({
           name: 'releaseYear',
           title: 'Udgivelses år',
           type: 'number',
+          group: 'releaseYear',
         }),
         defineField({
           name: 'cast',
@@ -113,6 +134,23 @@ export default defineType({
           options: {
             layout: 'tags',
           },
+          group: 'cast',
+        }),
+        defineField({
+          name: 'poster',
+          title: 'Plakat',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          group: 'poster',
+        }),
+        defineField({
+          name: 'description',
+          title: 'Beskrivelse',
+          type: 'text',
+          description: 'En kort beskrivelse af projektet',
+          group: 'description',
         }),
       ],
     }),

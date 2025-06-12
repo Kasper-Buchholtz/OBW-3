@@ -21,6 +21,20 @@ export function resolveHrefLang(
       return slug
         ? `${langPrefix}/projekter/${slug}`.replace(/\/{2,}/g, '/')
         : langPrefix || '/'
+    case 'fictionalCase':
+      return slug
+        ? `${langPrefix}/projekter/fictional/${slug}`.replace(/\/{2,}/g, '/')
+        : `${langPrefix}/projekter/fictional`
+
+    case 'commercialCase':
+      return slug
+        ? `${langPrefix}/projekter/commercial/${slug}`.replace(/\/{2,}/g, '/')
+        : `${langPrefix}/projekter/commercial`
+
+    case 'musicalCase':
+      return slug
+        ? `${langPrefix}/projekter/musical/${slug}`.replace(/\/{2,}/g, '/')
+        : `${langPrefix}/projekter/musical`
     case 'case':
       return slug
         ? `${langPrefix}/projekter/${slug}`.replace(/\/{2,}/g, '/')

@@ -3,18 +3,20 @@ import Link from "next/link";
 import Heading from "./Heading";
 import Paragraph from "./Paragraph";
 import Photo from "./Photo";
+import { clean } from "@/utils/sanitize";
+import { useParams } from "next/navigation";
 
 export function FictionalTypeCard({ data, index }) {
     return (
         <li className={`relative overflow-hidden col-span-full  max-h-screen/2.5`}>
             <Link className=" flex justify-between px-11 items-center inset-0 z-10 absolute peer size-full group hover:bg-darks-900/30 duration-500 transition-all ease-expo-in-out"
-                href={resolveHrefLang(data.locale, data._type, data.slug.current)}
+                href={clean(resolveHrefLang(data.locale, data._type, data.slug.current))}
                 title={data?.title}
             >
-                {data?.FictionalObject?.releaseYear ? (
+                {data?.releaseYear ? (
                     <div className="overflow-hidden">
                         <Heading tag="span" type="h3" className="text-center font-sans ">
-                            {data?.FictionalObject?.releaseYear}
+                            {data?.releaseYear}
                         </Heading>
                     </div>
                 ) : null}

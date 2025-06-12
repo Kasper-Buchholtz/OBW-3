@@ -99,7 +99,7 @@ export function MusicalTypeCard({ data }) {
                                         tag="h4"
                                         type="h3"
                                         fontFamily="serif"
-                                        dangerouslySetInnerHTML={{ __html: data?.musicalObject?.artist }}
+                                        dangerouslySetInnerHTML={{ __html: data?.artist }}
                                         className="relative block transition-all duration-500 group-hover:-translate-y-full ease-power3-inOut"
                                     />
                                     <Heading
@@ -107,7 +107,7 @@ export function MusicalTypeCard({ data }) {
                                         tag="h4"
                                         type="h3"
                                         fontFamily="serif"
-                                        dangerouslySetInnerHTML={{ __html: data?.musicalObject?.artist }}
+                                        dangerouslySetInnerHTML={{ __html: data?.artist }}
                                         className="absolute block w-full transition-all duration-500 translate-x-1/2 top-full group-hover:top-0 right-1/2 ease-power3-inOut"
                                     />
                                 </div>

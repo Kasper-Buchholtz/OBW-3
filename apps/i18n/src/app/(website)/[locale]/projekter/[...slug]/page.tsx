@@ -7,6 +7,7 @@ import { PROJECT_QUERY } from '@/sanity/lib/sanity.queries';
 import { generatePageMetadata } from '@/utils/metadataUtils';
 import ProjectTitle from '@/components/sections/ProjectTitle';
 import { PageBuilder } from '@/components/PageBuilder';
+import CommercialCredit from '@/components/sections/CommercialCredit';
 
 export interface Params {
   slug: string[];
@@ -20,7 +21,7 @@ export default async function DynamicRoute({
 }) {
   const { slug: slugArray, locale: locale } = await params
   const slug = slugArray.join('/');
-  const page = await loadPage(slug, locale, PROJECT_QUERY);
+  const page = await loadPage(slug, locale, PROJECT_QUERY) as unknown as any;
 
   if (!page) {
     notFound();
@@ -29,6 +30,7 @@ export default async function DynamicRoute({
   return (
     <PageContainer locale={page.localeInfo}>
       <ProjectTitle data={page} />
+      <CommercialCredit data={page.FictionalObject} />
       {page.pageBuilder &&
         <PageBuilder
           documentId={page._id}

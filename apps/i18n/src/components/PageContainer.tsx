@@ -47,7 +47,6 @@ export default function PageContainer({
   return (
     <>
       <Header locale={locale} />
-      <Lenis options={lenis} root={typeof document !== 'undefined' ? document.documentElement : null} />
       <main className="min-h-screen bg-lights-0">
         {children}
       </main>

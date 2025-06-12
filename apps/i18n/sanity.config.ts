@@ -50,6 +50,7 @@ export default defineConfig({
       supportedLanguages: [...Appconfig.i18n.locales],
       schemaTypes: [
         'page',
+        'case',
         'navigation',
         'footer',
         'settings',

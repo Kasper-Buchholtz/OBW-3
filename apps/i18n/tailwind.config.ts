@@ -13,6 +13,9 @@ const config: Pick<Config, 'content' | 'presets' | 'theme' | 'plugins'> = {
   presets: [sharedConfig],
   theme: {
     extend: {
+      scrollSnapAlign: {
+        start: 'start',
+      },
       fontSize: {
         small: 'clamp(12px, calc(16px + 1.6667vw), 14px);',
         regular: 'clamp(1em, 1.2rem + 0.667rem, 1.05rem);',
