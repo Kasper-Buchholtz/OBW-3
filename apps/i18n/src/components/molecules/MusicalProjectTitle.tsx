@@ -1,3 +1,8 @@
+import Card from "../atoms/Card";
+import Heading from "../atoms/Heading";
+import Photo from "../atoms/Photo";
+import Section from "../sections/Section";
+
 /**
  *
  * @returns: En MusicalProjectTitle-komponent ...
@@ -10,10 +15,6 @@
  *
 **/
 
-import Card from "../atoms/Card";
-import Heading from "../atoms/Heading";
-import Photo from "../atoms/Photo";
-import Section from "../sections/Section";
 
 const MusicalProjectTitle = ({ data }) => {
     return (

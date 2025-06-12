@@ -5,10 +5,8 @@ import PageContainer from '@/components/PageContainer';
 import { notFound } from 'next/navigation';
 import { fictional_PROJECT_QUERY } from '@/sanity/lib/sanity.queries';
 import { generatePageMetadata } from '@/utils/metadataUtils';
-import ProjectTitle from '@/components/sections/ProjectTitle';
 import { PageBuilder } from '@/components/PageBuilder';
 import CommercialCredit from '@/components/sections/CommercialCredit';
-import { FictionalType } from '@/components/molecules/FictionalType';
 import FictionalProjectTitle from '@/components/molecules/FictionalProjectTitle';
 
 export interface Params {

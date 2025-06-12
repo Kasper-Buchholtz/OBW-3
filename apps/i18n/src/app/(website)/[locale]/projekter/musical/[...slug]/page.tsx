@@ -5,10 +5,7 @@ import PageContainer from '@/components/PageContainer';
 import { notFound } from 'next/navigation';
 import { musical_PROJECT_QUERY } from '@/sanity/lib/sanity.queries';
 import { generatePageMetadata } from '@/utils/metadataUtils';
-import ProjectTitle from '@/components/sections/ProjectTitle';
 import { PageBuilder } from '@/components/PageBuilder';
-import CommercialCredit from '@/components/sections/CommercialCredit';
-import { MusicalType } from '@/components/molecules/MusicalType';
 import MusicalProjectTitle from '@/components/molecules/MusicalProjectTitle';
 
 export interface Params {
