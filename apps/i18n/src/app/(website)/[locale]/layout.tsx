@@ -11,6 +11,9 @@ import Script from 'next/script'
 import Appconfig from 'config'
 import { DM_Serif_Display, Inter } from 'next/font/google'
 import { VideoTimeProvider } from '@/components/sections/VideoTimeContext'
+import PageLoader from '@/components/molecules/PageLoader'
+import { PostHogProvider } from '@/components/providers'
+import posthog from 'posthog-js'
 
 const sans = Inter({
   subsets: ['latin'],
@@ -41,7 +44,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={` ${sans.variable} ${serif.variable}`}>
       <GoogleTagManager gtmId={settings?.googleTagManager?.id} />
-      <body>
+      <body className="selection:bg-lights-0 selection:text-darks-900">
         <Script
           id="show-banner"
           strategy="beforeInteractive"
@@ -50,7 +53,10 @@ export default async function RootLayout({
           }}
         />
 
-        <VideoTimeProvider>{children}</VideoTimeProvider>
+        <PostHogProvider>
+          <VideoTimeProvider>{children}</VideoTimeProvider>
+        </PostHogProvider>
+        <PageLoader />
         <SanityLive />
         {(await draftMode()).isEnabled && (
           <>

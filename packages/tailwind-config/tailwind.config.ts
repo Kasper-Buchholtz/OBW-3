@@ -34,7 +34,7 @@ const config: Omit<Config, 'content'> = {
         },
         darks: {
           700: '#333333',
-          900: '#0A0A0A'
+          900: '#0A0A0A',
         },
         superego: {
           green: '#3BE086',
@@ -329,6 +329,7 @@ const config: Omit<Config, 'content'> = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/container-queries'),
     require('tailwindcss-debug-screens'),
+
     plugin(function ({
       addUtilities,
       addVariant,

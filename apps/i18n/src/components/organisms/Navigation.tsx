@@ -255,22 +255,23 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
           /></div>
 
         <Section variant='none' className='w-full'>
-          <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto space-y-10 h-fit -col-end-1 col-span-full">
+          <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto -space-y-2 h-fit -col-end-1 col-span-full">
             {navItems.map((item, index) => (
               <li key={item.label}>
                 {item.subLinks ? (
                   <React.Fragment>
                     {/* Clicking this button toggles the submenu */}
                     <button
-                      className={`text-giant transition-colors ease-expo-in-out hover:text-lights-0  ${openSubmenus[index] ? "text-lights-0" : "text-shadow-0"}`}
+                      className={`text-mombo transition-colors ease-expo-in-out hover:text-lights-0  ${openSubmenus[index] ? "text-lights-0" : "text-shadow-0"}`}
                       onClick={() => toggleSubmenu(index)}
                     >
                       {item.label}
                     </button>
                     <ul
-                      className={`submenu-${index} absolute overflow-hidden translate-x-0 -translate-y-1/2 -right-0 top-1/2`}
+                      className={`submenu-${index} absolute overflow-hidden translate-x-full pl-24 -translate-y-1/2 -right-0 top-1/2 `}
                       style={{ opacity: 0 }}
                     >
+                      <li className='absolute top-1/2 left-0 bg-white block w-px h-full translate-x-1/2 -translate-y-1/2' />
                       {item.subLinks.map((subItem) => (
                         <li key={subItem.label}>
                           <Link className="w-full flex gap-3 duration-500 text-lights-0 text-large" href={subItem.href}>
@@ -281,7 +282,7 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
                     </ul>
                   </React.Fragment>
                 ) : (
-                  <Link className="hover:text-lights-0 duration-500 ease-expo-in-out w-full text-giant text-shadow-0" href={item.href}>
+                  <Link className="hover:text-lights-0 duration-500 ease-expo-in-out w-full text-mombo text-shadow-0" href={item.href}>
                     {item.label}
                   </Link>
                 )}
@@ -290,7 +291,7 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
           </ul>
         </Section>
         <div className="absolute overflow-hidden font-sans bottom-4 right-4 text-lights-400 text-[9px]">
-          <Link target="_blank" href="https://kasperbuchholtz.dk">Website by Kasperbuchholtz.dk</Link>
+          <Link target="_blank" href="https://kasperbuchholtz.dk">Website by Kasperbuchholtz.dk</Link> og <Link target="_blank" href="https://www.emiliehjoellund.dk/">Emiliehjoellund.dk</Link>
         </div>
       </nav>
       <button

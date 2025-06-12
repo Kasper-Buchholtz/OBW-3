@@ -12,7 +12,13 @@ import Link from 'next/link'
 import { resolveHrefLang } from '@repo/i18n/src/resolveHrefLang'
 import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'motion/react'
-import { useVideoTime } from './VideoTimeContext'
+import { useVideoTime } from './VideoTimeContext'import { FictionalTypeCard } from "../atoms/FictionalTypeCard";
+import { CommercialTypeCard } from "../atoms/CommercialTypeCard";
+import { ProjectTypeTitle } from "../molecules/ProjectTypeTitle";
+import { CommercialType } from "../molecules/CommercialType";
+import { FictionalType } from "../molecules/FictionalType";
+import { MusicalType } from "../molecules/MusicalType";
+
 gsap.registerPlugin(ScrollTrigger)
 
 /**
@@ -29,188 +35,12 @@ gsap.registerPlugin(ScrollTrigger)
 
 const ProjectsTypeSection = ({ data }) => {
   return (
-    <Section variant="mørk">
-      {clean(data.select) === 'musical' && <MusicalType data={data.cases} />}
-    </Section>
+    <>
+      {clean(data.select) === 'musical' && <MusicalType title={data.title} data={data.cases} />}
+            {clean(data.select) === 'commercial' && <CommercialType title={data.title} data={data.cases} />}
+            {clean(data.select) === 'fictional' && <FictionalType title={data.title} data={data.cases} />}
+    </>
   )
 }
 
-export default ProjectsTypeSection
-
-function MusicalType({ data }) {
-  return (
-    <div className="grid col-span-full grid-cols-subgrid">
-      <ul className="grid gap-6 grid-cols-subgrid col-span-full">
-        {data?.map((item) => <MusicalTypeCard data={item} key={item._id} />)}
-      </ul>
-    </div>
-  )
-}
-
-function MusicalTypeCard({ data }) {
-  const cardRef = React.useRef(null)
-  const cardHeadingRef = React.useRef(null)
-  const imageRef = React.useRef(null)
-  const videoRef = useRef(null)
-  const { setTime, getTime } = useVideoTime()
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const savedTime = getTime(data._id)
-
-    const onLoaded = () => {
-      try {
-        video.currentTime = savedTime
-        requestAnimationFrame(() => {
-          video.play().catch((err) => {
-            if (err.name !== 'AbortError') {
-              console.warn('Card video.play() failed', err)
-            }
-          })
-        })
-      } catch (err) {
-        console.warn('Card: setting currentTime failed', err)
-      }
-    }
-
-    video.addEventListener('loadedmetadata', onLoaded)
-
-    return () => {
-      if (video) {
-        setTime(data._id, video.currentTime)
-        video.removeEventListener('loadedmetadata', onLoaded)
-      }
-    }
-  }, [data._id])
-
-  React.useEffect(() => {
-    if (!cardRef.current || !cardHeadingRef.current) return
-
-    const ctx = gsap.context(() => {
-      gsap.set(cardRef.current, {
-        clipPath: 'inset(100% 0% 0% 0%)',
-        ease: 'expo.in',
-      })
-      gsap.set(cardHeadingRef.current, {
-        y: 50,
-        opacity: 0,
-      })
-
-      gsap.to(cardRef.current, {
-        clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 1,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: 'top 100%',
-          end: 'bottom 20%',
-          scrub: true,
-          toggleActions: 'play none none reverse',
-        },
-      })
-
-      gsap.to(cardHeadingRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: 'top 80%',
-          end: 'bottom 0%',
-          scrub: true,
-          markers: true,
-          toggleActions: 'play none none reverse',
-        },
-      })
-    }, cardRef)
-
-    return () => ctx.revert()
-  }, [])
-
-  return (
-    <li className="relative grid grid-cols-subgrid col-span-full h-screen/1.6">
-      <Link
-        href={resolveHrefLang(data.locale, data._type, data.slug.current)}
-        onClick={() => {
-          if (videoRef.current) {
-            setTime(data._id, videoRef.current.currentTime)
-          }
-        }}
-        className="grid h-full group grid-cols-subgrid col-span-full w-fit cursor-pointer"
-      >
-        <div className="relative col-end-4 -col-start-1">
-          <div ref={cardRef} className="h-full">
-            <motion.div>
-              <div ref={imageRef}>
-                {/* <Photo image={data?.image} className="h-full" /> */}
-                <motion.div layoutId={data._id}>
-                  <video
-                    loop
-                    autoPlay
-                    muted
-                    playsInline
-                    ref={videoRef}
-                    src={data?.video?.asset?.url}
-                  >
-                    <source src={data?.video?.asset?.url} />
-                  </video>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-          <div className="absolute left-0 z-10 -translate-x-1/2 w-fit bottom-8">
-            <div className="overflow-hidden">
-              <div ref={cardHeadingRef}>
-                <div className="relative overflow-hidden">
-                  <Heading
-                    spacing="none"
-                    tag="h4"
-                    type="h3"
-                    fontFamily="serif"
-                    dangerouslySetInnerHTML={{
-                      __html: data?.musicalObject?.artist,
-                    }}
-                    className="relative block transition-all duration-500 group-hover:-translate-y-full ease-power3-inOut"
-                  />
-                  <Heading
-                    spacing="none"
-                    tag="h4"
-                    type="h3"
-                    fontFamily="serif"
-                    dangerouslySetInnerHTML={{
-                      __html: data?.musicalObject?.artist,
-                    }}
-                    className="absolute block w-full transition-all duration-500 translate-x-1/2 top-full group-hover:top-0 right-1/2 ease-power3-inOut"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="relative w-full overflow-hidden">
-              <Paragraph
-                spacing="none"
-                tag="h4"
-                type="h3"
-                fontFamily="serif"
-                className="relative block w-full transition-all duration-500 delay-75 text-nowrap group-hover:-translate-y-full ease-power3-inOut"
-              >
-                {data?.title}
-              </Paragraph>
-              <Paragraph
-                spacing="none"
-                tag="h4"
-                type="h3"
-                fontFamily="serif"
-                className="absolute block w-full transition-all duration-500 delay-75 translate-x-1/2 text-nowrap top-full group-hover:top-0 right-1/2 ease-power3-inOut"
-              >
-                {data?.title}
-              </Paragraph>
-            </div>
-          </div>
-        </div>
-      </Link>
-    </li>
-  )
-}
+export default ProjectsTypeSection;

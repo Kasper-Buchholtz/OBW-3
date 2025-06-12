@@ -22,7 +22,8 @@ _type == "projectsType" => {
       },
       "videoURL": video.asset->url,
       commercialObj,
-      musicalObject
+      musicalObject,
+      FictionalObject
     }
       }
 `

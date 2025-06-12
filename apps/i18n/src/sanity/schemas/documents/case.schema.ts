@@ -40,7 +40,6 @@ export default defineType({
         source: 'title',
       },
     }),
-
     defineField({
       name: 'image',
       title: 'Image',
@@ -69,11 +68,11 @@ export default defineType({
         }),
       ],
     }),
-
     defineField({
       name: 'musicalObject',
       title: 'Musical',
       type: 'object',
+      hidden: ({ parent }) => parent?.caseType !== 'musical',
       fields: [
         defineField({
           name: 'artist',
@@ -84,6 +83,40 @@ export default defineType({
           name: 'production',
           title: 'Production',
           type: 'string',
+        }),
+      ],
+    }),
+    defineField({
+      name: 'FictionalObject',
+      title: 'Fictional',
+      type: 'object',
+      hidden: ({ parent }) => parent?.caseType !== 'fictional',
+      fields: [
+        defineField({
+          name: 'production',
+          title: 'Production',
+          type: 'string',
+          initialValue: 'Wisholm FILM',
+        }),
+        defineField({
+          name: 'director',
+          title: 'Instruktør',
+          type: 'string',
+          initialValue: 'Oliver Birk Wisholm',
+        }),
+        defineField({
+          name: 'releaseYear',
+          title: 'Udgivelses år',
+          type: 'number',
+        }),
+        defineField({
+          name: 'cast',
+          title: 'Cast',
+          type: 'array',
+          of: [{ type: 'string' }],
+          options: {
+            layout: 'tags',
+          },
         }),
       ],
     }),

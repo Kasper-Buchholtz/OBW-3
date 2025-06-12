@@ -3,12 +3,12 @@ import pages from './page.structure'
 import settings from './settings.structure'
 import projects from './projects.structure'
 
-export const structure: StructureResolver = (S, context) =>
+export const structure: StructureResolver = async (S, context) =>
   S.list()
     .title('Indhold')
     .items([
-      pages(S, context),
-      projects(S, context),
+      await pages(S, context),
+      await projects(S, context),
       S.divider(),
-      settings(S, context),
+      await settings(S, context),
     ])

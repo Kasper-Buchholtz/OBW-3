@@ -32,7 +32,7 @@ const config = {
                 },
                 darks: {
                     700: '#333333',
-                    900: '#0A0A0A'
+                    900: '#0A0A0A',
                 },
                 superego: {
                     green: '#3BE086',

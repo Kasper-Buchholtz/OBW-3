@@ -26,7 +26,7 @@ const LogoGallery = ({ data }) => {
             {data.title}
           </Heading>
         </div>
-        <ul className="grid grid-cols-1 gap-4  col-span-full sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5 md:p-12 md:flex-row">
+        <ul className="grid grid-cols-1 gap-6 col-span-full sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5 md:flex-row">
           {data.images.map((image, index) => (
             <li className='aspect-w-16 aspect-h-9' key={index}>
               <Photo image={image} className='object-contain' />
