@@ -46,7 +46,7 @@ export default function PageContainer({
 }) {
   return (
     <>
-      <Header locale={locale} />
+      {process.env.NODE_ENV !== 'production' && <Header locale={locale} />}
       <main className="min-h-screen bg-lights-0">
         {children}
       </main>

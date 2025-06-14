@@ -251,7 +251,8 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
             patternScaleY={2.9}
             patternRefreshInterval={2}
             patternAlpha={20}
-          /></div>
+          />
+        </div>
 
         <Section variant='none' className='w-full'>
           <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto -space-y-2 h-fit -col-end-1 col-span-full">
