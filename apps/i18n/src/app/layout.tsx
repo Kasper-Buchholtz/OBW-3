@@ -8,8 +8,7 @@ export default async function RootLayout({
   return (
     <html>
       <body className='selection:bg-lights-0 selection:text-darks-900 bg-darks-900'>
-        {process.env.NODE_ENV === 'production' ? null : children}
-        <WaitingPage />
+        {process.env.NODE_ENV === 'production' ? <WaitingPage /> : children}
       </body>
     </html>
   )
