@@ -16,6 +16,7 @@ import { hero3Query } from '@/sanity/queries/sections/Hero3.query'
 import { projectsTypeQuery } from '../sections/projectsType.query'
 import { Watch_Query } from '../sections/WatchType.query'
 import { ImagesType_QUERY } from '../sections/ImagesType.query'
+import { SocialsSection_Query } from '../sections/SocialsSection.query'
 
 export const pageBuilderQuery = groq`
   pageBuilder[] {
@@ -35,6 +36,7 @@ export const pageBuilderQuery = groq`
     ${LogoGalleryQuery},
     ${LogoGallery2Query},
     ${Watch_Query},
-    ${ImagesType_QUERY}
+    ${ImagesType_QUERY},
+    ${SocialsSection_Query}
   }
 `

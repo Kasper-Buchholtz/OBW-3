@@ -79,18 +79,18 @@ export function MusicalTypeCard({ data }) {
     };
 
     return (
-        <li className="relative grid grid-cols-subgrid col-span-full h-screen/1.6">
+        <li className="relative grid grid-cols-subgrid col-span-full md:h-screen/1.6">
             <a
                 className="grid h-full group grid-cols-subgrid col-span-full w-fit cursor-pointer"
                 onClick={handleClick}
             >
-                <div className="relative col-end-4 -col-start-1">
-                    <div ref={cardRef} className="h-full">
+                <div className="relative col-start-1 -col-end-1 md:col-end-4 md:-col-start-1 space-y-3">
+                    <div ref={cardRef} className="h-auto md:h-full">
                         <div ref={imageRef}>
                             <Photo image={data?.image} className="h-full" />
                         </div>
                     </div>
-                    <div className="absolute left-0 z-10 -translate-x-1/2 w-fit bottom-8">
+                    <div className="md:absolute md:left-0 z-10 md:-translate-x-1/2 w-fit md:bottom-8">
                         <div className="overflow-hidden">
                             <div ref={cardHeadingRef}>
                                 <div className="relative overflow-hidden">

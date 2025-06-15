@@ -30,12 +30,12 @@ const TextWithIllustration = ({
     <>
       <Section
         data={data}
-        className='overflow-hidden h-screen'
+        className='overflow-hidden min-h-screen'
       >
         {data?.flip ? (
           <>
             <div
-              className={`${marginOne} relative h-screen block col-start-1 -col-end-1 md:col-start-1 md:flex md:-col-end-7 xl:col-start-1 xl:col-end-13 2xl:col-start-1 2xl:col-end-13  ${flip ? '' : ''}`}
+              className={`${marginOne} relative max-h-screen/2 md:max-h-screen/1.1 block col-start-1 -col-end-1 md:col-start-1 md:flex md:-col-end-7 xl:col-start-1 xl:col-end-13 2xl:col-start-1 2xl:col-end-13  ${flip ? '' : ''}`}
             >
               <Media showInPopup data={data?.MediaObject?.media} />
             </div>
@@ -46,7 +46,7 @@ const TextWithIllustration = ({
         ) : (
           <>
             <div
-              className={` ${marginTwo} relative h-screen block col-start-1 -col-end-1 md:-col-start-1 md:flex md:col-end-7 xl:-col-start-1 xl:-col-end-13 2xl:-col-start-1 2xl:-col-end-13 ${flip ? 'md:flex-row-reverse' : ''}`}
+              className={` ${marginTwo} relative max-h-screen/2 md:max-h-screen/1.1 block col-start-1 -col-end-1 md:-col-start-1 md:flex md:col-end-7 xl:-col-start-1 xl:-col-end-13 2xl:-col-start-1 2xl:-col-end-13 ${flip ? 'md:flex-row-reverse' : ''}`}
             >
               <Media showInPopup data={data?.MediaObject?.media} />
             </div>

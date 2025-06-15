@@ -6,6 +6,8 @@ import Paragraph from "../atoms/Paragraph";
 import Photo from "../atoms/Photo";
 import Section from "../sections/Section";
 import gsap from "gsap";
+import { FadeUp } from '../interactions/AnimateFadeIn';
+import ElementEffect from '../interactions/ElementEffect';
 
 /**
  *
@@ -39,7 +41,9 @@ const FictionalProjectTitle = ({ data }) => {
                 <div className="absolute bottom-0 left-0 grid mt-auto size-full place-content-[bottom_left] pb-12 pl-4 xs:pl-4 sm:pl-13 md:pl-24 lg:pl-19 xl:pl-36 2xl:pl-52">
                     <div className="mt-auto">
                         <Heading tag="h1" fontFamily="serif" type="h1">
-                            {data.title}
+                            <ElementEffect duration={0.5} delay={0.2}>
+                                {data.title}
+                            </ElementEffect>
                         </Heading>
                     </div>
                 </div>

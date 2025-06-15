@@ -30,7 +30,7 @@ export default async function DynamicRoute({
     return (
         <PageContainer locale={page.localeInfo}>
             <FictionalProjectTitle data={page} />
-            <CommercialCredit data={page.FictionalObject} />
+            <CommercialCredit data={page.data} />
             {page.pageBuilder &&
                 <PageBuilder
                     documentId={page._id}

@@ -20,6 +20,7 @@ import { createDataAttribute, useOptimistic } from '@sanity/visual-editing'
 import { PageBuilderProps, PageData, Section } from '@/types/PageBuilder.types'
 import ProjectsTypeSection from './sections/projectsTypeSection'
 import WatchSection from './sections/WatchSection'
+import SocialsSection from './sections/SocialsSection'
 
 const sanityConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
@@ -122,6 +123,8 @@ function renderSection(section: Section) {
       return <WatchSection data={section} />
     case 'ImagesType':
       return <GallerySection section={section} />
+    case 'SocialsSection':
+      return <SocialsSection data={section} />
     default:
       return null
   }

@@ -24,7 +24,7 @@ const config: Pick<Config, 'content' | 'presets' | 'theme' | 'plugins'> = {
         large: 'clamp(1.563rem, calc(1.563rem + 3.125vw), 2.25rem);',
         huge: 'clamp(1.953rem, calc(1.953rem + 2.6667vw), 3.375rem);',
         giant: 'clamp(2.441rem, calc(2.441rem + 2.1111vw), 5.063rem);',
-        mombo: 'clamp(3.352rem, calc(5.552rem + 2.4333vw), 7.45rem)',
+        mombo: 'clamp(3.352rem, calc(4.652rem + 2.4333vw), 7.45rem)',
       },
     },
   },

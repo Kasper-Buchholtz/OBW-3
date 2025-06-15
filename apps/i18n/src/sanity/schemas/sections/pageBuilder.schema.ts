@@ -102,7 +102,6 @@ export const pageBuilder = defineType({
       type: 'IconPicker',
     }),
 
-
     /* New */
     defineArrayMember({
       name: 'WatchType',
@@ -115,6 +114,14 @@ export const pageBuilder = defineType({
     defineArrayMember({
       name: 'projectsType',
       type: 'projectsType',
-    })
+    }),
+    defineArrayMember({
+      name: 'SocialsSection',
+      type: 'SocialsSection',
+    }),
+    defineArrayMember({
+      name: 'HonorsAndAwardsType',
+      type: 'HonorsAndAwardsType',
+    }),
   ],
 })

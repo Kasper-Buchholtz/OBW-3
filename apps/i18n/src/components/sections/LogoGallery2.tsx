@@ -9,7 +9,7 @@ import { clean } from '@/utils/sanitize'
 
 const LogoGallery2 = ({ data }) => {
   return (
-    <Section data={data} className="bg-superego-green">
+    <Section data={data} className="min-h-screen bg-superego-green">
       <div className="col-span-full">
         <Heading size="h2" className="mb-4">
           {data.title}

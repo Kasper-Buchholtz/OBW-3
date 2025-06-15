@@ -204,11 +204,12 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
       // Open submenu: animate children with stagger
       gsap.fromTo(
         submenuItems,
-        { x: -100, opacity: 0 }, // Initially off-screen
+        { x: -100, opacity: 0, height: "0px" }, // Initially off-screen
         {
           x: 0,
           opacity: 1,
           duration: 0.5,
+          height: "auto", // Expand to fit content
           ease: "expo.inOut",
           stagger: 0.1, // Stagger effect for opening
         }
@@ -216,6 +217,7 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
 
       gsap.to(submenu, {
         opacity: 1, // Show submenu
+        height: "auto", // Ensure height is set to auto
         duration: 0.5,
         ease: "expo.inOut",
       });
@@ -225,6 +227,7 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
         x: -100,
         opacity: 0,
         duration: 0.5,
+        height: "0px", // Collapse to zero height
         ease: "power3.inOut",
         stagger: 0.1, // Stagger effect for closing
       });
@@ -255,9 +258,9 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
         </div>
 
         <Section variant='none' className='w-full'>
-          <ul ref={navItemsRef} className="w-full max-w-lg col-start-2 mt-auto mb-auto mr-auto -space-y-2 h-fit -col-end-1 col-span-full">
+          <ul ref={navItemsRef} className="w-full max-w-lg col-start-1 md:col-start-2 mt-auto mb-auto mr-auto -space-y-2 h-fit -col-end-1 col-span-full">
             {navItems.map((item, index) => (
-              <li key={item.label}>
+              <li key={item.label} className=''>
                 {item.subLinks ? (
                   <React.Fragment>
                     {/* Clicking this button toggles the submenu */}
@@ -268,10 +271,10 @@ const Navigation = ({ isOpen, handleClick, locale }) => {
                       {item.label}
                     </button>
                     <ul
-                      className={`submenu-${index} absolute overflow-hidden translate-x-full pl-24 -translate-y-1/2 -right-0 top-1/2 `}
-                      style={{ opacity: 0 }}
+                      className={`submenu-${index} md:absolute overflow-hidden md:translate-x-full md:pl-24 md:-translate-y-1/2 md:-right-0 md:top-1/2 `}
+                      style={{ opacity: 0, height: "0px" }}
                     >
-                      <li className='absolute top-1/2 left-0 bg-white block w-px h-full translate-x-1/2 -translate-y-1/2' />
+                      <li className='hidden md:block absolute top-1/2 left-0 bg-white block w-px h-full translate-x-1/2 -translate-y-1/2' />
                       {item.subLinks.map((subItem) => (
                         <li key={subItem.label}>
                           <Link className="w-full flex gap-3 duration-500 text-lights-0 text-large" href={subItem.href}>

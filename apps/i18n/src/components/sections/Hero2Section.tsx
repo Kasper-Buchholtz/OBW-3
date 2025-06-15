@@ -7,6 +7,7 @@ import TextSplit from '../interactions/SplitText'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { media } from 'sanity-plugin-media'
+import ElementEffect from '../interactions/ElementEffect'
 
 /**
  *
@@ -56,16 +57,13 @@ const Hero2: React.FC<HeroProps> = ({ data, ...props }) => {
         <div className='absolute inset-0 h-screen size-full ' ref={MediaRef}>
           <Media data={data?.MediaObject?.media} />
         </div>
-        <div className=" absolute z-20 w-full px-4 flex items-end h-screen bottom-0 left-0 text-superego-light-base px-4 xs:px-4 sm:px-13 md:px-24 lg:px-19 xl:px-36 2xl:px-52">
-          <Heading spacing="small" tag="h1" type="h1">
-            <span className='leading-none overflow-hidden'>
-              <div
-                className="text-center opacity-0 translate-y-full group-hover:opacity-100 duration-500 group-hover:translate-y-0 transition-all ease-expo-in-out"
-              >
-                {data.title}
-              </div>
-            </span>
-          </Heading>
+        <div className=" absolute h-auto z-20 w-full px-4 flex items-end md:h-screen bottom-12 md:bottom-0 left-0 text-superego-light-base px-4 xs:px-4 sm:px-13 md:px-24 lg:px-19 xl:px-36 2xl:px-52">
+          <ElementEffect delay={0.3}>
+            <Heading spacing="small" tag="h1" type="h1">
+
+              {data.title}
+            </Heading>
+          </ElementEffect>
         </div>
       </Section>
     </>

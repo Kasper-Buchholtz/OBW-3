@@ -3,82 +3,72 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
 
 const contactFormType = defineType({
   name: 'contactFormType',
-  title: 'Kontaktformular',
+  title: 'Kontakt måder',
   type: 'object',
   // {title: 'indstillinger', name: 'settings'}
   icon: Envelope,
   fields: [
     defineField({
       name: 'heading',
-      type: 'heading',
+      type: 'string',
     }),
     defineField({
-      name: 'array',
+      name: 'contactInfomations',
       type: 'array',
-      title: 'Feltyper',
+      title: 'Kontaktinformationer',
+      description: 'Tilføj kontaktinformationer',
       of: [
-        {
+        defineField({
+          name: 'contactInformation',
           type: 'object',
-          name: 'formFields',
-          title: 'Form Fields',
+          title: 'Kontaktinformation',
+          preview: {
+            select: {
+              title: 'title',
+              mail: 'mail',
+              phone: 'phone',
+            },
+            prepare(selection) {
+              const { title, mail, phone } = selection
+              return {
+                title: title,
+                subtitle: `mail:${mail ? mail : ''} |  tlf:${phone ? phone : ''}`,
+              }
+            },
+          },
           fields: [
             defineField({
-              name: 'required',
-              title: 'Required',
-              type: 'boolean',
-              initialValue: false,
-            }),
-            defineField({
-              name: 'fieldName',
-              title: 'Field Name',
+              name: 'title',
               type: 'string',
-              validation: (Rule) => Rule.required(),
+              title: 'Titel',
             }),
             defineField({
-              name: 'placeholder',
-              title: 'Placeholder',
+              name: 'mail',
+              type: 'email',
+              title: 'E-mail',
+              description: 'E-mail adresse for kontakt',
+            }),
+            defineField({
+              name: 'phone',
               type: 'string',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'fieldId',
-              title: 'Field ID',
-              type: 'slug',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'inputType',
-              title: 'Input Type',
-              type: 'string',
-              initialValue: 'text',
-              options: {
-                layout: 'dropdown',
-                list: [
-                  { value: 'text', title: 'Text input' },
-                  { value: 'email', title: 'Email' },
-                  { value: 'phone', title: 'Phone number' },
-                  { value: 'textArea', title: 'Text area' },
-                  { value: 'file', title: 'File upload' },
-                ],
-              },
-              validation: (Rule) => Rule.required(),
+              title: 'Telefon',
+              description: 'Telefonnummer for kontakt',
             }),
           ],
-        },
+        }),
       ],
     }),
-    {
+    defineField({
       name: 'design',
       type: 'design',
       title: 'Design',
-    },
-
-    {
+    }),
+    defineField({
       // group: "settings",
       name: 'SectionSettings',
       title: 'Indstillinger',
       type: 'SectionSettings',
-    },
+    }),
   ],
   preview: {
     select: {
@@ -88,8 +78,8 @@ const contactFormType = defineType({
     prepare(selection) {
       const { title, subtitle } = selection
       return {
-        title: title.heading.heading,
-        subtitle: subtitle,
+        title: title,
+        subtitle: 'Kontakt måder',
       }
     },
   },

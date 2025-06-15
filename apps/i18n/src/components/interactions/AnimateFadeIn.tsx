@@ -25,20 +25,15 @@ export function FadeUp({
 }) {
   return (
     <motion.div
-      variants={{
-        hidden: {
-          opacity: 0,
-          y: 15,
-        },
-        visible: {
-          opacity: 1,
-          y: 0,
-        },
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        delay,
+        duration,
+        ease: [0.87, 0, 0.13, 1]
       }}
-      initial="hidden"
-      whileInView="visible"
       viewport={{ once: true }}
-      transition={{ delay, type: "spring", duration }}
+      whileInView={{ opacity: 1, y: 0 }}
     >
       {children}
     </motion.div>

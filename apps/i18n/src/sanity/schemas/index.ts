@@ -51,6 +51,8 @@ import { projectsType } from './sections/projectsType.schema'
 import commercialCase from './documents/cases/commercial.case.schema'
 import fictionalCase from './documents/cases/fictional.case.schema'
 import musicalCase from './documents/cases/musical.case.schema'
+import { SocialsSection } from './sections/SocialsSection.schema'
+import { HonorsAndAwardsType } from './sections/HonorsAndAwards.schema'
 
 export const schemaTypes = [
   heroType,
@@ -83,6 +85,7 @@ export const schemaTypes = [
   Design,
   Media,
   pageBuilder,
+  HonorsAndAwardsType,
   innerBlocks,
   Padding,
   Color,
@@ -96,6 +99,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     page,
     caseSchema,
     commercialCase,
+    HonorsAndAwardsType,
+    SocialsSection,
     musicalCase,
     fictionalCase,
     event,
