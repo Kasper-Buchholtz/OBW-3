@@ -20,7 +20,7 @@ const WaitingPage: React.FC = () => {
                 <Logo className='mx-auto w-full h-full' />
                 <div>
                     <Heading type='h3'>
-                        <span className='text-lights-0'> Comming soon</span>
+                        <span className='text-lights-0'> Coming soon</span>
                     </Heading>
                 </div>
                 <div className=' z-20'>
